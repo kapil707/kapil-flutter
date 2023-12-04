@@ -63,8 +63,12 @@ class MyTextField extends StatelessWidget {
 }
 
 class MyPasswordTextField extends StatefulWidget {
+  final TextEditingController mytextController;
+
+  MyPasswordTextField({required this.mytextController});
+
   @override
-  _MyPasswordTextFieldState createState() => _MyPasswordTextFieldState();
+  State<MyPasswordTextField> createState() => _MyPasswordTextFieldState();
 }
 
 class _MyPasswordTextFieldState extends State<MyPasswordTextField> {
@@ -73,6 +77,7 @@ class _MyPasswordTextFieldState extends State<MyPasswordTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: widget.mytextController,
       obscureText: _isObscure,
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.lock),
