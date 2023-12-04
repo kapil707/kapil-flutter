@@ -1,41 +1,66 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:kapil11/home_page/home_page.dart';
 import 'package:kapil11/login_page.dart';
+import 'package:kapil11/session.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class Splash_screen extends StatefulWidget {
+  const Splash_screen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<Splash_screen> createState() => _Splash_screenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _Splash_screenState extends State<Splash_screen> {
+  var islogin;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    checkUserLoginState();
+    // Timer(const Duration(seconds: 2), () {
+    //   checkUserLoginState();
+    // });
+  }
 
-    Timer(Duration(seconds: 2), () {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => Mylogin()));
+  checkUserLoginState() async {
+    await Shared.getUserSharedPreferences().then((value) async {
+      islogin = value;
+      if (islogin == true) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Home_page_class(),
+          ),
+        );
+      } else {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => login_page_class(),
+          ),
+        );
+      }
+      //setState(() {});
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      color: Colors.blue,
-      child: Center(
-        child: Text(
-          'Welcome',
-          style: TextStyle(
-            fontSize: 34,
-            color: Colors.white,
+      body: Container(
+        color: Colors.blue,
+        child: const Center(
+          child: Text(
+            'D.R. Distributor',
+            style: TextStyle(
+              fontSize: 34,
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
+            ),
           ),
         ),
       ),
-    ));
+    );
   }
 }

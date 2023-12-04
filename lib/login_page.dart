@@ -9,14 +9,14 @@ import 'package:kapil11/utility/app_api.dart';
 import 'package:kapil11/utility/app_urls.dart';
 import 'package:kapil11/widgets/inputs_desions.dart';
 
-class Mylogin extends StatefulWidget {
-  const Mylogin({super.key});
+class login_page_class extends StatefulWidget {
+  const login_page_class({super.key});
 
   @override
-  State<Mylogin> createState() => _MyloginState();
+  State<login_page_class> createState() => _login_page_classState();
 }
 
-class _MyloginState extends State<Mylogin> {
+class _login_page_classState extends State<login_page_class> {
   var username = TextEditingController();
   var password = TextEditingController();
 

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:kapil11/home_page.dart';
+import 'package:kapil11/session.dart';
 import 'package:kapil11/splash_screen.dart';
 import 'package:kapil11/utility/app_alertbox.dart';
 import 'package:kapil11/utility/app_urls.dart';
@@ -34,8 +34,40 @@ class login_model {
       if (result[0]["user_return"] == "0") {
         AppAlertBox.showAlertDialog(_context, "Error", result[0]["user_alert"]);
       } else {
+        var dt = json["items"];
+
+        var user_session = dt[0]["user_session"].toString();
+        var user_fname = dt[0]["user_fname"].toString();
+        var user_code = dt[0]["user_code"].toString();
+        var user_altercode = dt[0]["user_altercode"].toString();
+        var user_type = dt[0]["user_type"].toString();
+        var user_password = dt[0]["user_password"].toString();
+        var user_image = dt[0]["user_image"].toString();
+
+        var user_alert = dt[0]["user_alert"].toString();
+        var user_return = dt[0]["user_return"].toString();
+
+        var user_division = dt[0]["user_division"].toString();
+        var user_compcode = dt[0]["user_compcode"].toString();
+        var otp_type = dt[0]["otp_type"].toString();
+        var otp_sms = dt[0]["otp_sms"].toString();
+        var otp_massage_txt = dt[0]["otp_massage_txt"].toString();
+        var user_nrx = dt[0]["user_nrx"].toString();
+        // session me values set iss say hoti ha
+        Shared.saveLoginSharedPreference(
+                true,
+                user_session,
+                user_fname,
+                user_code,
+                user_altercode,
+                user_type,
+                user_password,
+                user_image,
+                user_nrx)
+            .then((value) {});
+
         Navigator.pushReplacement(
-            _context, MaterialPageRoute(builder: (context) => Home_page()));
+            _context, MaterialPageRoute(builder: (context) => Splash_screen()));
       }
     }
   }
