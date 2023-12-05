@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:convert';
 
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:kapil11/home_page/home_page.dart';
 import 'package:kapil11/login_page.dart';
@@ -27,10 +29,17 @@ class _Splash_screenState extends State<Splash_screen> {
     await Shared.getUserSharedPreferences().then((value) async {
       islogin = value;
       if (islogin == true) {
+        var _url =
+            "https://www.drdistributor.com/flutter_api/api01/home_page_web";
+        var uri = Uri.parse(_url);
+        final response = await http.post(uri);
+        var body = response.body;
+        var json = jsonDecode(body);
+
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => Home_page_class(),
+            builder: (context) => Home_page_class(json_values: json),
           ),
         );
       } else {

@@ -2,25 +2,38 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class slider_class extends StatefulWidget {
-  const slider_class({super.key});
+  final json_values;
+
+  slider_class({
+    required this.json_values,
+  });
 
   @override
   State<slider_class> createState() => _slider_classState();
 }
 
 class _slider_classState extends State<slider_class> {
-  List imageList = [
-    {
-      "id": "1",
-      "image_path":
-          "https://www.drdweb.co.in/uploads/manage_slider/photo/main/volini1.jpg"
-    },
-    {
-      "id": "2",
-      "image_path":
-          "https://www.drdweb.co.in/uploads/manage_slider/photo/main/volini1.jpg"
-    }
-  ];
+  // List imageList = [
+  //   {
+  //     "id": "1",
+  //     "image_path":
+  //         "https://www.drdweb.co.in/uploads/manage_slider/photo/main/volini1.jpg"
+  //   },
+  //   {
+  //     "id": "2",
+  //     "image_path":
+  //         "https://www.drdweb.co.in/uploads/manage_slider/photo/main/volini1.jpg"
+  //   }
+  // ];
+
+  late List imageList;
+  //var json_values;
+  @override
+  void initState() {
+    super.initState();
+    imageList = widget.json_values;
+    //print("kepil ji");
+  }
 
   final CarouselController carouselController = CarouselController();
   int curindex = 0;
@@ -33,7 +46,7 @@ class _slider_classState extends State<slider_class> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
                   image: DecorationImage(
-                    image: NetworkImage(item["image_path"]),
+                    image: NetworkImage(item["image"]),
                     fit: BoxFit.cover,
                   ),
                 ),
