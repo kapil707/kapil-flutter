@@ -1,18 +1,18 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-class Home_box_class extends StatefulWidget {
+class Home_box_class2 extends StatefulWidget {
   final json_values;
 
-  Home_box_class({
+  Home_box_class2({
     required this.json_values,
   });
 
   @override
-  State<Home_box_class> createState() => _Home_box_classState();
+  State<Home_box_class2> createState() => _Home_box_class2State();
 }
 
-class _Home_box_classState extends State<Home_box_class> {
+class _Home_box_class2State extends State<Home_box_class2> {
   late List imageList;
   //var json_values;
   @override

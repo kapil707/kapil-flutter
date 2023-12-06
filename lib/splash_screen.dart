@@ -36,6 +36,8 @@ class _Splash_screenState extends State<Splash_screen> {
         var body = response.body;
         var json = jsonDecode(body);
 
+        //print(json);
+
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
