@@ -31,7 +31,7 @@ class _Home_box_classState extends State<Home_box_class> {
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
-            height: 125,
+            height: 126,
             width: 125,
             decoration: BoxDecoration(
               color: Colors.white,
