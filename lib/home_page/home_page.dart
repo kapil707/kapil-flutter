@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:kapil11/home_page/home_box_title_style.dart';
+import 'package:kapil11/widgets/custom_app_bar.dart';
 import 'package:kapil11/home_page/home_box_style.dart';
 import 'package:kapil11/home_page/home_box_style2.dart';
-import 'package:kapil11/widgets/slider/slider_widgets.dart';
+import 'package:kapil11/widgets/drawer_widgets.dart';
+import 'package:kapil11/widgets/slider_widgets.dart';
 
 class Home_page_class extends StatefulWidget {
   final json_values;
@@ -68,65 +71,8 @@ class _Home_page_classState extends State<Home_page_class> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Custom Header Menu'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              // Handle search button tap
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.settings),
-            onPressed: () {
-              // Handle settings button tap
-            },
-          ),
-          // Add more action buttons as needed
-        ],
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.blue, Colors.green],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-        ),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text(
-                'Drawer Header',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            ListTile(
-              title: Text('Item 1'),
-              onTap: () {
-                // Handle item 1 tap
-              },
-            ),
-            ListTile(
-              title: Text('Item 2'),
-              onTap: () {
-                // Handle item 2 tap
-              },
-            ),
-            // Add more ListTile widgets for additional menu items
-          ],
-        ),
-      ),
+      appBar: CustomAppBar(),
+      drawer: App_drawer_class(),
       body: SingleChildScrollView(
         child: Container(
           color: const Color.fromARGB(255, 234, 234, 234),
@@ -137,7 +83,7 @@ class _Home_page_classState extends State<Home_page_class> {
                   slider_class(json_values: result["row_dt"]),
                 },
                 if (result["result"] == "divisioncategory") ...{
-                  Text(result["row_title"]),
+                  home_box_title_class(title: result["row_title"]),
                   Divider(
                     color: Colors.black,
                     thickness: 2.0,
@@ -149,7 +95,7 @@ class _Home_page_classState extends State<Home_page_class> {
                       height: 150),
                 },
                 if (result["result"] == "itemcategory") ...{
-                  Text(result["row_title"]),
+                  home_box_title_class(title: result["row_title"]),
                   Divider(
                     color: Colors.black,
                     thickness: 2.0,
