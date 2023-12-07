@@ -13,9 +13,7 @@ class search_medicine_model {
     var uri = Uri.parse(_url);
     var response = await http.post(uri, body: _body);
     //final response = await http.post(uri);
-    var body = response.body;
-    var json = jsonDecode(body);
 
-    return json["items"].toString();
+    return response;
   }
 }

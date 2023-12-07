@@ -7,6 +7,7 @@ import 'package:kapil11/widgets/custom_app_bar.dart';
 import 'package:kapil11/home_page/home_page.dart';
 import 'package:kapil11/login_page.dart';
 import 'package:kapil11/session.dart';
+import 'package:kapil11/widgets/search_medicine_page/search_medicine_page.dart';
 
 class Splash_screen extends StatefulWidget {
   const Splash_screen({super.key});
@@ -45,6 +46,12 @@ class _Splash_screenState extends State<Splash_screen> {
             builder: (context) => Home_page_class(json_values: json),
           ),
         );
+        // Navigator.pushReplacement(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) => Myapicall(),
+        //   ),
+        // );
       } else {
         Navigator.pushReplacement(
           context,
