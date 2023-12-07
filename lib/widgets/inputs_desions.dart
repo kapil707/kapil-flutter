@@ -37,12 +37,12 @@ class Mybutton extends StatelessWidget {
 
 class MyTextField extends StatelessWidget {
   final TextEditingController mytextController;
-  final String mylabelText;
+  final String? mylabelText;
   final String? myhintText;
   final Icon? myprefixIcon;
   MyTextField({
     required this.mytextController,
-    required this.mylabelText,
+    this.mylabelText,
     this.myhintText,
     this.myprefixIcon,
   });
@@ -95,6 +95,39 @@ class _MyPasswordTextFieldState extends State<MyPasswordTextField> {
               _isObscure = !_isObscure;
             });
           },
+        ),
+      ),
+    );
+  }
+}
+
+class MyTextSearchField extends StatelessWidget {
+  final Function(String) myonChanged;
+  final TextEditingController mytextController;
+  final String? mylabelText;
+  final String? myhintText;
+  final Icon? myprefixIcon;
+  MyTextSearchField({
+    required this.myonChanged,
+    required this.mytextController,
+    this.mylabelText,
+    this.myhintText,
+    this.myprefixIcon,
+  });
+  @override
+  Widget build(Object context) {
+    return TextField(
+      onChanged: myonChanged,
+      controller: mytextController,
+      decoration: InputDecoration(
+        labelText: mylabelText,
+        hintText: myhintText,
+        prefixIcon: myprefixIcon!,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(11.0),
+          borderSide: BorderSide(
+            color: Colors.pink,
+          ),
         ),
       ),
     );
