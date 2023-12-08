@@ -80,48 +80,53 @@ class SearchMedicineList extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                // Set your desired color
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Image.network(
-                    dataList[index].itemImage,
-                    height: 64, // Specify the height you want
-                    width: 64, // Specify the width you want
-                    fit: BoxFit.cover,
-                  ),
-                  Container(
-                    width: 11,
-                  ),
-                  Container(
-                    width: 300,
-                    alignment: Alignment.centerLeft,
-                    child: Column(
-                      children: [
-                        Text(
-                          dataList[index].itemName,
-                          textAlign: TextAlign.left,
-                        ),
-                        Container(
-                          child: Text(
-                            dataList[index].itemMargin,
+            child: GestureDetector(
+              onTap: () {
+                print(dataList[index].itemName);
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  // Set your desired color
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Image.network(
+                      dataList[index].itemImage,
+                      height: 64, // Specify the height you want
+                      width: 64, // Specify the width you want
+                      fit: BoxFit.cover,
+                    ),
+                    Container(
+                      width: 11,
+                    ),
+                    Container(
+                      width: 300,
+                      alignment: Alignment.centerLeft,
+                      child: Column(
+                        children: [
+                          Text(
+                            dataList[index].itemName,
                             textAlign: TextAlign.left,
                           ),
-                        ),
-                        Text(
-                          dataList[index].itemCompany,
-                          textAlign: TextAlign.left,
-                        ),
-                      ],
+                          Container(
+                            child: Text(
+                              dataList[index].itemMargin,
+                              textAlign: TextAlign.left,
+                            ),
+                          ),
+                          Text(
+                            dataList[index].itemCompany,
+                            textAlign: TextAlign.left,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           );

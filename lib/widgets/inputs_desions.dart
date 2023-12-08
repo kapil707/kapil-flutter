@@ -103,6 +103,7 @@ class _MyPasswordTextFieldState extends State<MyPasswordTextField> {
 
 class MyTextSearchField extends StatelessWidget {
   final Function(String) myonChanged;
+  final VoidCallback myclearSearchBox;
   final TextEditingController mytextController;
   final String? mylabelText;
   final String? myhintText;
@@ -113,6 +114,7 @@ class MyTextSearchField extends StatelessWidget {
     this.mylabelText,
     this.myhintText,
     this.myprefixIcon,
+    required this.myclearSearchBox,
   });
   @override
   Widget build(Object context) {
@@ -128,6 +130,10 @@ class MyTextSearchField extends StatelessWidget {
           borderSide: BorderSide(
             color: Colors.pink,
           ),
+        ),
+        suffixIcon: IconButton(
+          icon: Icon(Icons.clear),
+          onPressed: myclearSearchBox,
         ),
       ),
     );
