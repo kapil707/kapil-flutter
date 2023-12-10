@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:kapil11/model/login_model.dart';
+import 'package:kapil11/login/login_model.dart';
 import 'package:kapil11/splash_screen.dart';
 import 'package:kapil11/uitheme/style.dart';
 import 'package:kapil11/utility/app_alertbox.dart';
@@ -9,14 +9,14 @@ import 'package:kapil11/utility/app_api.dart';
 import 'package:kapil11/utility/app_urls.dart';
 import 'package:kapil11/widgets/inputs_desions.dart';
 
-class login_page_class extends StatefulWidget {
-  const login_page_class({super.key});
+class LoginClass extends StatefulWidget {
+  const LoginClass({super.key});
 
   @override
-  State<login_page_class> createState() => _login_page_classState();
+  State<LoginClass> createState() => _LoginClassState();
 }
 
-class _login_page_classState extends State<login_page_class> {
+class _LoginClassState extends State<LoginClass> {
   var username = TextEditingController();
   var password = TextEditingController();
 

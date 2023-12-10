@@ -4,19 +4,19 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:kapil11/widgets/custom_app_bar.dart';
-import 'package:kapil11/home_page/home_page.dart';
-import 'package:kapil11/login_page.dart';
+import 'package:kapil11/home/home_page.dart';
+import 'package:kapil11/login/login_page.dart';
 import 'package:kapil11/session.dart';
-import 'package:kapil11/widgets/search_medicine_page/search_medicine_page.dart';
+import 'package:kapil11/medicine_search/medicine_search_page.dart';
 
-class Splash_screen extends StatefulWidget {
-  const Splash_screen({super.key});
+class SplashScreenClass extends StatefulWidget {
+  const SplashScreenClass({super.key});
 
   @override
-  State<Splash_screen> createState() => _Splash_screenState();
+  State<SplashScreenClass> createState() => _SplashScreenClassState();
 }
 
-class _Splash_screenState extends State<Splash_screen> {
+class _SplashScreenClassState extends State<SplashScreenClass> {
   var islogin;
   @override
   void initState() {
@@ -43,7 +43,7 @@ class _Splash_screenState extends State<Splash_screen> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => Home_page_class(json_values: json),
+            builder: (context) => HomeClass(json_values: json),
           ),
         );
         // Navigator.pushReplacement(
@@ -56,7 +56,7 @@ class _Splash_screenState extends State<Splash_screen> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => login_page_class(),
+            builder: (context) => LoginClass(),
           ),
         );
       }

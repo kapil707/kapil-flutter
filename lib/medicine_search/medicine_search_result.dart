@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:kapil11/medicine_details/medicine%20details_page.dart';
 
 class MedicineItem {
   final String itemCode;
@@ -66,10 +67,10 @@ class MedicineItem {
   }
 }
 
-class SearchMedicineList extends StatelessWidget {
+class MedicineSearchList extends StatelessWidget {
   final List<MedicineItem> dataList;
 
-  SearchMedicineList(this.dataList);
+  MedicineSearchList(this.dataList);
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +83,15 @@ class SearchMedicineList extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
               onTap: () {
-                print(dataList[index].itemName);
+                //print(dataList[index].itemName);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MedicineDetailsClass(
+                        itemName: dataList[index].itemName,
+                        itemImage: dataList[index].itemImage),
+                  ),
+                );
               },
               child: Container(
                 decoration: BoxDecoration(

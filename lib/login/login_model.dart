@@ -66,8 +66,8 @@ class login_model {
                 user_nrx)
             .then((value) {});
 
-        Navigator.pushReplacement(
-            _context, MaterialPageRoute(builder: (context) => Splash_screen()));
+        Navigator.pushReplacement(_context,
+            MaterialPageRoute(builder: (context) => SplashScreenClass()));
       }
     }
   }

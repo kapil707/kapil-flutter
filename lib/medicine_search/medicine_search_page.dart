@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:kapil11/utility/api_service.dart';
 import 'package:kapil11/widgets/custom_app_bar2.dart';
 import 'package:kapil11/widgets/inputs_desions.dart';
-import 'package:kapil11/widgets/search_medicine_page/search_medicine_result.dart';
+import 'package:kapil11/medicine_search/medicine_search_result.dart';
 import 'package:http/http.dart' as http;
 
-class search_medicine_class extends StatefulWidget {
+class MedicineSearchClass extends StatefulWidget {
   @override
-  State<search_medicine_class> createState() => _search_medicine_classState();
+  State<MedicineSearchClass> createState() => _MedicineSearchClassState();
 }
 
-class _search_medicine_classState extends State<search_medicine_class> {
+class _MedicineSearchClassState extends State<MedicineSearchClass> {
   var username = TextEditingController();
   String textFieldValue = '';
   late Future<List<MedicineItem>> _dataListFuture;
@@ -82,7 +82,7 @@ class _search_medicine_classState extends State<search_medicine_class> {
               } else {
                 List<MedicineItem> dataList =
                     snapshot.data as List<MedicineItem>;
-                return SearchMedicineList(dataList);
+                return MedicineSearchList(dataList);
               }
             },
           ),

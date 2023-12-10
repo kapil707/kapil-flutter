@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kapil11/login_page.dart';
+import 'package:kapil11/login/login_page.dart';
 import 'package:kapil11/splash_screen.dart';
 
 void main() {
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: Splash_screen());
+        home: SplashScreenClass());
   }
 }
 

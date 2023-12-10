@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:kapil11/home_page/home_box_title_style.dart';
+import 'package:kapil11/home/home_box_title_style.dart';
 import 'package:kapil11/widgets/custom_app_bar.dart';
-import 'package:kapil11/home_page/home_box_style.dart';
-import 'package:kapil11/home_page/home_box_style2.dart';
+import 'package:kapil11/home/home_box_style.dart';
+import 'package:kapil11/home/home_box_style2.dart';
 import 'package:kapil11/widgets/drawer_widgets.dart';
 import 'package:kapil11/widgets/slider_widgets.dart';
 
-class Home_page_class extends StatefulWidget {
+class HomeClass extends StatefulWidget {
   final json_values;
 
-  Home_page_class({
+  HomeClass({
     required this.json_values,
   });
 
   @override
-  State<Home_page_class> createState() => _Home_page_classState();
+  State<HomeClass> createState() => _HomeClassState();
 }
 
-class _Home_page_classState extends State<Home_page_class> {
+class _HomeClassState extends State<HomeClass> {
   var json_values;
   @override
   void initState() {

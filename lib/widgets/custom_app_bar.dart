@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kapil11/widgets/search_medicine_page/search_medicine_page.dart';
+import 'package:kapil11/medicine_search/medicine_search_page.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
@@ -13,7 +13,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => search_medicine_class(),
+                builder: (context) => MedicineSearchClass(),
               ),
             );
           },
