@@ -19,6 +19,7 @@ class MedicineDetailsClass extends StatefulWidget {
 class _MedicineDetailsClassState extends State<MedicineDetailsClass> {
   var itemName;
   var itemImage;
+
   @override
   void initState() {
     super.initState();
@@ -30,19 +31,92 @@ class _MedicineDetailsClassState extends State<MedicineDetailsClass> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar2(page_title: "Medicine Details"),
-        body: Container(
-          child: Column(
-            children: [
-              Image.network(
-                itemImage,
-                height: 64, // Specify the height you want
-                width: 64, // Specify the width you want
-                fit: BoxFit.cover,
-              ),
-              Text(itemName),
-            ],
+      appBar: CustomAppBar2(page_title: "Medicine Details"),
+      body: Stack(
+        children: [
+          // Main content
+          Container(
+            // Adjust this height based on your main content
+            height: MediaQuery
+                .of(context)
+                .size
+                .height - 100,
+            width: MediaQuery
+                .of(context)
+                .size
+                .width,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.network(
+                    itemImage,
+                    height: 300, // Specify the height you want
+                    width: 300, // Specify the width you want
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.network(
+                        itemImage,
+                        height: 60, // Specify the height you want
+                        width: 60, // Specify the width you want
+                        fit: BoxFit.cover,
+                      ),
+                      Image.network(
+                        itemImage,
+                        height: 60, // Specify the height you want
+                        width: 60, // Specify the width you want
+                        fit: BoxFit.cover,
+                      ),
+                      Image.network(
+                        itemImage,
+                        height: 60, // Specify the height you want
+                        width: 60, // Specify the width you want
+                        fit: BoxFit.cover,
+                      ),
+                      Image.network(
+                        itemImage,
+                        height: 60, // Specify the height you want
+                        width: 60, // Specify the width you want
+                        fit: BoxFit.cover,
+                      ),
+                    ],
+                  ),
+                ),
+
+                Text(itemName),
+              ],
+            ),
           ),
-        ));
+          // Footer
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              height: 100,
+              color: Colors.green,
+              child: Center(
+                child: Row(
+                  children: [
+                    Text(
+                      'Footer',
+                      style: TextStyle(color: Colors.white),
+                    ),Text(
+                      'Footer',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

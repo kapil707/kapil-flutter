@@ -17,7 +17,7 @@ class MedicineItem {
   final String itemScheme;
   final String itemMargin;
   final String itemFeatured;
-  final String itemDescription1;
+  final String itemDescription;
   final String similarItems;
   final String count;
   final String getRecord;
@@ -37,7 +37,7 @@ class MedicineItem {
     required this.itemScheme,
     required this.itemMargin,
     required this.itemFeatured,
-    required this.itemDescription1,
+    required this.itemDescription,
     required this.similarItems,
     required this.count,
     required this.getRecord,
@@ -59,7 +59,7 @@ class MedicineItem {
       itemScheme: json['item_scheme'],
       itemMargin: json['item_margin'],
       itemFeatured: json['item_featured'],
-      itemDescription1: json['item_description1'],
+      itemDescription: json['item_description'],
       similarItems: json['similar_items'],
       count: json['count'],
       getRecord: json['get_record'],
