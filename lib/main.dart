@@ -4,7 +4,6 @@ import 'package:kapil11/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
-  //test
 }
 
 class MyApp extends StatelessWidget {
