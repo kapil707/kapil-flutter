@@ -19,8 +19,8 @@ class login_model {
     if (_username != "" && _password != "") {
       var _url = AppUrls.login_page_url;
       var _body = {
-        'submit': '98c08565401579448aad7c64033dcb4081906dcb',
-        'user_altercode': _username,
+        'api_key': '98c08565401579448aad7c64033dcb4081906dcb',
+        'user_name': _username,
         'user_password': _password
       };
       var uri = Uri.parse(_url);
@@ -30,22 +30,19 @@ class login_model {
       var json = jsonDecode(body);
 
       final result = json["items"];
-      //print(result[0]["user_session"]);
-      if (result[0]["user_return"] == "0") {
-        AppAlertBox.showAlertDialog(_context, "Error", result[0]["user_alert"]);
+      print(result);
+      if (result[0]["return_status"] == "0") {
+        AppAlertBox.showAlertDialog(_context, "Error", result[0]["return_message"]);
       } else {
         var dt = json["items"];
 
-        var user_session = dt[0]["user_session"].toString();
+        var user_id = dt[0]["user_id"].toString();
         var user_fname = dt[0]["user_fname"].toString();
         var user_code = dt[0]["user_code"].toString();
         var user_altercode = dt[0]["user_altercode"].toString();
         var user_type = dt[0]["user_type"].toString();
         var user_password = dt[0]["user_password"].toString();
         var user_image = dt[0]["user_image"].toString();
-
-        var user_alert = dt[0]["user_alert"].toString();
-        var user_return = dt[0]["user_return"].toString();
 
         var user_division = dt[0]["user_division"].toString();
         var user_compcode = dt[0]["user_compcode"].toString();
@@ -56,13 +53,13 @@ class login_model {
         // session me values set iss say hoti ha
         Shared.saveLoginSharedPreference(
                 true,
-                user_session,
-                user_fname,
+                user_type,
+                user_id,
                 user_code,
                 user_altercode,
-                user_type,
                 user_password,
                 user_image,
+                user_fname,
                 user_nrx)
             .then((value) {});
 
