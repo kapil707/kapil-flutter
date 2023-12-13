@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:kapil11/medicine_details/medicine%20details_page.dart';
+import 'package:kapil11/medicine_details/medicine_details_page.dart';
 
 class MedicineItem {
   final String itemCode;
@@ -84,10 +84,11 @@ class MedicineSearchList extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 //print(dataList[index].itemName);
-                Navigator.pushReplacement(
+                Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => MedicineDetailsClass(
+                        itemCode: dataList[index].itemCode,
                         itemName: dataList[index].itemName,
                         itemImage: dataList[index].itemImage),
                   ),

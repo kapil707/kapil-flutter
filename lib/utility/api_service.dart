@@ -13,4 +13,24 @@ class ApiService {
     var response = await http.post(uri, body: _body);
     return response;
   }
+
+  static Future<http.Response> medicine_add_to_cart_api(
+      String _item_order_quantity, String _item_code) async {
+    var _url = AppUrls.medicine_add_to_cart_api;
+    var _body = {
+      'api_key': '98c08565401579448aad7c64033dcb4081906dcb',
+      'item_order_quantity': _item_order_quantity,
+      'item_code': _item_code,
+      'user_altercode': 'v153',
+      'user_password': 'f5bb0c8de146c67b44babbf4e6584cc0',
+      'user_type': 'chemist',
+      'order_type': 'flutter',
+      'mobilenumber': 'xxxx',
+      'modalnumber': 'xxxx',
+      'device_id': 'xxxx',
+    };
+    var uri = Uri.parse(_url);
+    var response = await http.post(uri, body: _body);
+    return response;
+  }
 }

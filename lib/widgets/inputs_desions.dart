@@ -22,6 +22,11 @@ class Mybutton extends StatelessWidget {
       onPressed: () {
         callBack!();
       },
+      style: ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(11.0),
+        ),
+      ),
       child: btnIcon != null
           ? Row(
               children: [
@@ -49,16 +54,19 @@ class MyTextField extends StatelessWidget {
   @override
   Widget build(Object context) {
     return TextField(
-        controller: mytextController,
-        decoration: InputDecoration(
-            labelText: mylabelText,
-            hintText: myhintText,
-            prefixIcon: myprefixIcon!,
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(11.0),
-                borderSide: BorderSide(
-                  color: Colors.pink,
-                ))));
+      controller: mytextController,
+      decoration: InputDecoration(
+        labelText: mylabelText,
+        hintText: myhintText,
+        prefixIcon: myprefixIcon,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(11.0),
+          borderSide: BorderSide(
+            color: Colors.pink,
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -135,6 +143,32 @@ class MyTextSearchField extends StatelessWidget {
           icon: Icon(Icons.clear),
           onPressed: myclearSearchBox,
         ),
+      ),
+    );
+  }
+}
+
+class IconButtonWithText extends StatelessWidget {
+  final IconData icon;
+  final String text;
+  final VoidCallback onPressed;
+
+  IconButtonWithText({
+    required this.icon,
+    required this.text,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onPressed,
+      child: Row(
+        children: [
+          Icon(icon),
+          SizedBox(height: 8),
+          Text(text),
+        ],
       ),
     );
   }

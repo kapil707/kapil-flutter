@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kapil11/medicine_search/medicine_search_page.dart';
+import 'package:kapil11/my_cart/my_cart_page.dart';
+import 'package:kapil11/widgets/inputs_desions.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
@@ -18,10 +20,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             );
           },
         ),
-        IconButton(
-          icon: Icon(Icons.settings),
+        IconButtonWithText(
+          icon: Icons.shopping_bag,
+          text: "3",
           onPressed: () {
-            // Handle settings button tap
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => MyCartClass(),
+              ),
+            );
           },
         ),
         // Add more action buttons as needed

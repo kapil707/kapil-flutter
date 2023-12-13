@@ -1,13 +1,21 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:kapil11/uitheme/style.dart';
+import 'package:kapil11/utility/api_service.dart';
 
 import 'package:kapil11/widgets/custom_app_bar2.dart';
 
+import '../widgets/inputs_desions.dart';
+
 class MedicineDetailsClass extends StatefulWidget {
+  final String itemCode;
   final String itemName;
   final String itemImage;
 
   const MedicineDetailsClass({
+    required this.itemCode,
     required this.itemName,
     required this.itemImage,
   });
@@ -17,12 +25,16 @@ class MedicineDetailsClass extends StatefulWidget {
 }
 
 class _MedicineDetailsClassState extends State<MedicineDetailsClass> {
+  var order_qty = TextEditingController();
+
+  var itemCode;
   var itemName;
   var itemImage;
 
   @override
   void initState() {
     super.initState();
+    itemCode = widget.itemCode;
     itemName = widget.itemName;
     itemImage = widget.itemImage;
     //print("kepil ji");
@@ -37,14 +49,8 @@ class _MedicineDetailsClassState extends State<MedicineDetailsClass> {
           // Main content
           Container(
             // Adjust this height based on your main content
-            height: MediaQuery
-                .of(context)
-                .size
-                .height - 100,
-            width: MediaQuery
-                .of(context)
-                .size
-                .width,
+            height: MediaQuery.of(context).size.height - 100,
+            width: MediaQuery.of(context).size.width,
             child: Column(
               children: [
                 Padding(
@@ -87,7 +93,6 @@ class _MedicineDetailsClassState extends State<MedicineDetailsClass> {
                     ],
                   ),
                 ),
-
                 Text(itemName),
               ],
             ),
@@ -98,20 +103,56 @@ class _MedicineDetailsClassState extends State<MedicineDetailsClass> {
             left: 0,
             right: 0,
             child: Container(
-              height: 100,
+              height: 120,
               color: Colors.green,
-              child: Center(
-                child: Row(
-                  children: [
-                    Text(
-                      'Footer',
-                      style: TextStyle(color: Colors.white),
-                    ),Text(
-                      'Footer',
-                      style: TextStyle(color: Colors.white),
+              child: Column(
+                children: [
+                  Text(
+                    'Order Quantity',
+                    style: TextStyle(color: Colors.white, fontSize: 25),
+                  ),
+                  Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            width: 120,
+                            height: 40,
+                            child: MyTextField(
+                              mytextController: order_qty,
+                              myhintText: "Enter Quantity....",
+                              myprefixIcon: Icon(Icons.add),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Mybutton(
+                            btnName: "Add To Cart",
+                            btnStyle: mTextStyle11(),
+                            callBack: () async {
+                              String _item_order_quantity =
+                                  order_qty.text.toString();
+                              final response =
+                                  await ApiService.medicine_add_to_cart_api(
+                                      _item_order_quantity, itemCode);
+                              var body = response.body;
+                              var json = jsonDecode(body);
+                              //print(bb);
+                              var dt = json["items"];
+                              print(dt[0]["status"]);
+                              if (dt[0]["status"] == "1") {
+                                Navigator.pop(context);
+                              }
+                            },
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
