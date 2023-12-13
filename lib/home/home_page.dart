@@ -104,7 +104,7 @@ class _HomeClassState extends State<HomeClass> {
                       child: Home_box_class2(
                         json_values: result["row_dt"],
                       ),
-                      height: 150),
+                      height: 300),
                 },
               },
               Text("Welcome To Home page xx vv"),
