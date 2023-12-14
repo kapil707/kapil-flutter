@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:kapil11/utility/app_urls.dart';
 import 'package:kapil11/widgets/custom_app_bar.dart';
 import 'package:kapil11/home/home_page.dart';
 import 'package:kapil11/login/login_page.dart';
@@ -31,8 +32,7 @@ class _SplashScreenClassState extends State<SplashScreenClass> {
     await Shared.getUserSharedPreferences().then((value) async {
       islogin = value;
       if (islogin == true) {
-        var _url =
-            "https://www.drdistributor.com/flutter_api/api01/home_page_web";
+        var _url = AppUrls.home_page_api;
         var uri = Uri.parse(_url);
         final response = await http.post(uri);
         var body = response.body;

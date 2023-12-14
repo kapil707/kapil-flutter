@@ -5,7 +5,6 @@ import 'package:kapil11/utility/api_service.dart';
 import 'package:kapil11/widgets/custom_app_bar2.dart';
 import 'package:kapil11/widgets/inputs_desions.dart';
 import 'package:kapil11/medicine_search/medicine_search_result.dart';
-import 'package:http/http.dart' as http;
 
 class MedicineSearchClass extends StatefulWidget {
   @override
@@ -30,8 +29,8 @@ class _MedicineSearchClassState extends State<MedicineSearchClass> {
     final response = await ApiService.searchMedicine(textFieldValue);
 
     if (response.statusCode == 200) {
-      var bb = json.decode(response.body);
-      List<dynamic> data = bb["items"];
+      var mybody = json.decode(response.body);
+      List<dynamic> data = mybody["items"];
       List<MedicineItem> medicineItems =
           data.map((item) => MedicineItem.fromJson(item)).toList();
       return medicineItems;
