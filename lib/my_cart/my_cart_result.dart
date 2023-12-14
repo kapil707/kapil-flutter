@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:kapil11/medicine_details/medicine_details_page.dart';
 
 class MyCartItem {
   final String itemId;
@@ -67,68 +68,67 @@ class MyCartList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 500,
-      child: ListView.builder(
-        itemCount: dataList.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: GestureDetector(
-              onTap: () {
-                //print(dataList[index].itemName);
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => MedicineDetailsClass(
-                //         itemCode: dataList[index].itemCode,
-                //         itemName: dataList[index].itemName,
-                //         itemImage: dataList[index].itemImage),
-                //   ),
-                // );
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  // Set your desired color
-                  borderRadius: BorderRadius.circular(10.0),
+    return ListView.builder(
+      itemCount: dataList.length,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: GestureDetector(
+            onTap: () {
+              print(dataList[index].itemName);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MedicineDetailsClass(
+                      itemCode: dataList[index].itemCode,
+                      itemName: dataList[index].itemName,
+                      itemImage: dataList[index].itemImage),
                 ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Image.network(
-                      dataList[index].itemImage,
-                      height: 64, // Specify the height you want
-                      width: 64, // Specify the width you want
-                      fit: BoxFit.cover,
+              );
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                // Set your desired color
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.network(
+                    dataList[index].itemImage,
+                    height: 64, // Specify the height you want
+                    width: 64, // Specify the width you want
+                    fit: BoxFit.cover,
+                  ),
+                  Container(
+                    width: 11,
+                  ),
+                  Container(
+                    width: 300,
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          dataList[index].itemName,
+                          textAlign: TextAlign.left,
+                        ),
+                        Text(
+                          dataList[index].itemCompany,
+                          textAlign: TextAlign.left,
+                        ),
+                      ],
                     ),
-                    Container(
-                      width: 11,
-                    ),
-                    Container(
-                      width: 300,
-                      alignment: Alignment.centerLeft,
-                      child: Column(
-                        children: [
-                          Text(
-                            dataList[index].itemName,
-                            textAlign: TextAlign.left,
-                          ),
-                          Text(
-                            dataList[index].itemCompany,
-                            textAlign: TextAlign.left,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

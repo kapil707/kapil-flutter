@@ -11,7 +11,7 @@ class Mybutton extends StatelessWidget {
   Mybutton({
     required this.btnName,
     this.btnIcon,
-    this.bgColor = Colors.blue,
+    this.bgColor = Colors.amberAccent,
     this.btnStyle,
     this.callBack,
   });
@@ -89,8 +89,7 @@ class _MyPasswordTextFieldState extends State<MyPasswordTextField> {
       obscureText: _isObscure,
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.lock),
-        hintText: "Enter UserName....",
-        labelText: "Password",
+        hintText: "Enter Password....",
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(11.0),
             borderSide: BorderSide(color: Colors.pink)),

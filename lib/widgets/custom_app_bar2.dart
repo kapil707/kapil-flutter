@@ -26,16 +26,8 @@ class _CustomAppBar2State extends State<CustomAppBar2> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: Colors.amberAccent,
       title: Text(page_title),
-      flexibleSpace: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.blue, Colors.green],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
-      ),
     );
   }
 

@@ -26,6 +26,7 @@ class _MedicineSearchClassState extends State<MedicineSearchClass> {
   Future<List<MedicineItem>> fetchMedicineData() async {
     // Implement your data fetching logic here
     // For example, you might call your API using the ApiService
+
     final response = await ApiService.searchMedicine(textFieldValue);
 
     if (response.statusCode == 200) {
@@ -70,18 +71,47 @@ class _MedicineSearchClassState extends State<MedicineSearchClass> {
               myclearSearchBox: clearSearchBox,
             ),
           ),
-          Text("Result found"),
           FutureBuilder(
             future: _dataListFuture,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator();
+                return Container(
+                  height: MediaQuery.of(context).size.height - 300,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          child: CircularProgressIndicator(),
+                        ),
+                      ),
+                      Container(height: 11),
+                      Text("Loading....")
+                    ],
+                  ),
+                );
               } else if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
               } else {
                 List<MedicineItem> dataList =
                     snapshot.data as List<MedicineItem>;
-                return MedicineSearchList(dataList);
+                if (dataList.isEmpty) {
+                  return Container(
+                      height: MediaQuery.of(context).size.height - 300,
+                      child: Center(
+                        child: Image.network(
+                          "https://www.drdistributor.com//img_v51/no_record_found.png",
+                          fit: BoxFit.cover,
+                        ),
+                      ));
+                } else {
+                  return Container(
+                      height: MediaQuery.of(context).size.height - 200,
+                      child: MedicineSearchList(dataList));
+                }
               }
             },
           ),

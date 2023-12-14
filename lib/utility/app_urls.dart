@@ -1,5 +1,5 @@
 class AppUrls {
-  static String login_page_url =
+  static String login_api =
       "https://www.drdistributor.com/flutter_api/api01/login_api";
   static String home_page_api =
       "https://www.drdistributor.com/flutter_api/api01/home_page_api";

@@ -40,17 +40,35 @@ class _MyCartClassState extends State<MyCartClass> {
       appBar: CustomAppBar2(page_title: "Search Medicine"),
       body: Column(
         children: [
-          Text("Result found"),
           FutureBuilder(
             future: _dataListFuture,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator();
+                return Container(
+                  height: MediaQuery.of(context).size.height - 150,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          child: CircularProgressIndicator(),
+                        ),
+                      ),
+                      Container(height: 11),
+                      Text("Loading....")
+                    ],
+                  ),
+                );
               } else if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
               } else {
                 List<MyCartItem> dataList = snapshot.data as List<MyCartItem>;
-                return MyCartList(dataList);
+                return Container(
+                    height: MediaQuery.of(context).size.height - 150,
+                    child: MyCartList(dataList));
               }
             },
           ),

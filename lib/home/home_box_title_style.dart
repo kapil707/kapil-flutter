@@ -26,7 +26,7 @@ class _home_box_title_classState extends State<home_box_title_class> {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: 120,
+        width: 130,
         height: 50,
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.only(
@@ -34,8 +34,8 @@ class _home_box_title_classState extends State<home_box_title_class> {
             bottomRight: Radius.circular(100.0),
           ),
           border: Border.all(
-            color: Colors.green,
-            width: 2.0,
+            color: Colors.amberAccent,
+            width: 3.0,
           ),
         ),
         child: Center(

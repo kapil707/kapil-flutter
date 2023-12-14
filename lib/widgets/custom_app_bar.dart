@@ -7,6 +7,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: Colors.amberAccent,
       title: Text('Home Page'),
       actions: [
         IconButton(
@@ -34,15 +35,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         // Add more action buttons as needed
       ],
-      flexibleSpace: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.blue, Colors.green],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
-      ),
+      // flexibleSpace: Container(
+      //   decoration: BoxDecoration(
+      //   gradient: LinearGradient(
+      //     colors: [Colors.blue, Colors.green],
+      //     begin: Alignment.topLeft,
+      //     end: Alignment.bottomRight,
+      //   ),
+      // ),
+      //   ),
+      // ),
     );
   }
 
