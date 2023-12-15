@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:kapil11/session.dart';
 import 'package:kapil11/splash_screen.dart';
 import 'package:kapil11/utility/api_service.dart';
 import 'package:kapil11/utility/app_alertbox.dart';
 import 'package:kapil11/utility/app_urls.dart';
+import 'package:http/http.dart' as http;
 
 class login_model {
   static api_call(_context, _username, _password) async {
@@ -21,16 +21,18 @@ class login_model {
       AppAlertBox.showAlertDialog(_context, "working", "working1");
 
       var _url = AppUrls.login_api;
+      AppAlertBox.showAlertDialog(_context, "working", "working2");
       var _body = {
         'api_key': '98c08565401579448aad7c64033dcb4081906dcb',
         'user_name': _username,
         'user_password': _password
       };
       var uri = Uri.parse(_url);
+      AppAlertBox.showAlertDialog(_context, "working", "working3");
       var response = await http.post(uri, body: _body);
 
+      AppAlertBox.showAlertDialog(_context, "working", "working4");
       var mybody = json.decode(response.body);
-      AppAlertBox.showAlertDialog(_context, "working", "working2");
       final result = mybody["items"];
       //print(result);
       AppAlertBox.showAlertDialog(
