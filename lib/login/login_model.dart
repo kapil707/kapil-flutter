@@ -18,11 +18,23 @@ class login_model {
     }
 
     if (_username != "" && _password != "") {
-      final response = await ApiService.login_api(_username, _password);
-      var mybody = json.decode(response.body);
+      AppAlertBox.showAlertDialog(_context, "working", "working1");
 
+      var _url = AppUrls.login_api;
+      var _body = {
+        'api_key': '98c08565401579448aad7c64033dcb4081906dcb',
+        'user_name': _username,
+        'user_password': _password
+      };
+      var uri = Uri.parse(_url);
+      var response = await http.post(uri, body: _body);
+
+      var mybody = json.decode(response.body);
+      AppAlertBox.showAlertDialog(_context, "working", "working2");
       final result = mybody["items"];
-      print(result);
+      //print(result);
+      AppAlertBox.showAlertDialog(
+          _context, "working", result[0]["return_message"]);
       if (result[0]["return_status"] == "0") {
         AppAlertBox.showAlertDialog(
             _context, "Error", result[0]["return_message"]);
