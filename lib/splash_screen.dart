@@ -68,16 +68,41 @@ class _SplashScreenClassState extends State<SplashScreenClass> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
         color: Colors.amberAccent,
-        child: const Center(
-          child: Text(
-            'D.R. Distributor',
-            style: TextStyle(
-              fontSize: 34,
-              fontWeight: FontWeight.w700,
-              color: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            CircularProgressIndicator(),
+            Container(height: 11),
+            Text(
+              'D.R. Distributor',
+              style: TextStyle(
+                fontSize: 34,
+                fontWeight: FontWeight.w700,
+                color: Colors.white,
+              ),
             ),
-          ),
+            Container(height: 100),
+            Center(
+              child: const Text(
+                "D R Distributors Pvt Ltd",
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Center(
+              child: const Text(
+                "Website version 44",
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Container(height: 100),
+          ],
         ),
       ),
     );

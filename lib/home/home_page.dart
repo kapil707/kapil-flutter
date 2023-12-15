@@ -5,6 +5,7 @@ import 'package:kapil11/home/home_box_style.dart';
 import 'package:kapil11/home/home_box_style2.dart';
 import 'package:kapil11/widgets/drawer_widgets.dart';
 import 'package:kapil11/widgets/slider_widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeClass extends StatefulWidget {
   final json_values;
@@ -19,6 +20,7 @@ class HomeClass extends StatefulWidget {
 
 class _HomeClassState extends State<HomeClass> {
   var json_values;
+  var user_name = "";
   @override
   void initState() {
     super.initState();
