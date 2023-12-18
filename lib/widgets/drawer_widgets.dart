@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kapil11/user_account/account.dart';
+import 'package:kapil11/user_account/update_account.dart';
+import 'package:kapil11/user_account/update_image.dart';
+import 'package:kapil11/user_account/update_password.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class App_drawer_class extends StatefulWidget {
@@ -100,18 +104,50 @@ class _App_drawer_classState extends State<App_drawer_class> {
           ListTile(
             title: Text("Account"),
             leading: Icon(Icons.account_box),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const UserAccountClass(),
+                ),
+              );
+            },
           ),
           ListTile(
             title: Text("Update account"),
             leading: Icon(Icons.edit),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const UserUpdateAccountClass(),
+                ),
+              );
+            },
           ),
           ListTile(
             title: Text("Update image"),
             leading: Icon(Icons.camera_alt),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const UserUpdateImageClass(),
+                ),
+              );
+            },
           ),
           ListTile(
             title: Text("Update password"),
             leading: Icon(Icons.key),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const UserUpdatePasswordClass(),
+                ),
+              );
+            },
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),

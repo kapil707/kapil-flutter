@@ -26,82 +26,84 @@ class _LoginClassState extends State<LoginClass> {
         title: Text("Login"),
         backgroundColor: Colors.amberAccent,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.amberAccent,
-              borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(
-                    500), // Set the bottom-left border radius here
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.amberAccent,
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(
+                      500), // Set the bottom-left border radius here
+                ),
+              ),
+              height: 200,
+              child: Center(
+                child: Image.asset(
+                  'assets/images/logo4.png',
+                  width: 100,
+                ),
               ),
             ),
-            height: 200,
-            child: Center(
-              child: Image.asset(
-                'assets/images/logo4.png',
-                width: 100,
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(height: 92),
+                  Text("Enter UserName"),
+                  MyTextField(
+                    mytextController: username,
+                    myhintText: "Enter UserName....",
+                    myprefixIcon: Icon(Icons.account_box),
+                  ),
+                  Container(height: 11),
+                  Text("Enter Password"),
+                  MyPasswordTextField(
+                    mytextController: password,
+                  ),
+                  Container(height: 11),
+                  Center(
+                    child: Container(
+                      width: 150,
+                      child: Mybutton(
+                        btnName: "Login",
+                        btnIcon: Icon(Icons.lock),
+                        btnStyle: mTextStyle11(),
+                        callBack: () {
+                          String _username = username.text.toString();
+                          String _password = password.text.toString();
+                          //print(ue);
+                          login_model.api_call(context, _username, _password);
+                        },
+                      ),
+                    ),
+                  ),
+                  Container(height: 100),
+                  Center(
+                    child: const Text(
+                      "D R Distributors Pvt Ltd",
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: const Text(
+                      "Website version 44",
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(height: 92),
-                Text("Enter UserName"),
-                MyTextField(
-                  mytextController: username,
-                  myhintText: "Enter UserName....",
-                  myprefixIcon: Icon(Icons.account_box),
-                ),
-                Container(height: 11),
-                Text("Enter Password"),
-                MyPasswordTextField(
-                  mytextController: password,
-                ),
-                Container(height: 11),
-                Center(
-                  child: Container(
-                    width: 150,
-                    child: Mybutton(
-                      btnName: "Login",
-                      btnIcon: Icon(Icons.lock),
-                      btnStyle: mTextStyle11(),
-                      callBack: () {
-                        String _username = username.text.toString();
-                        String _password = password.text.toString();
-                        //print(ue);
-                        login_model.api_call(context, _username, _password);
-                      },
-                    ),
-                  ),
-                ),
-                Container(height: 100),
-                Center(
-                  child: const Text(
-                    "D R Distributors Pvt Ltd",
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-                Center(
-                  child: const Text(
-                    "Website version 44",
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
