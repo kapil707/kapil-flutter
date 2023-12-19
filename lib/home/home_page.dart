@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kapil11/home/home_box_title_style.dart';
+import 'package:kapil11/home/home_menu.dart';
 import 'package:kapil11/widgets/custom_app_bar.dart';
 import 'package:kapil11/home/home_box_style.dart';
 import 'package:kapil11/home/home_box_style2.dart';
@@ -84,28 +85,21 @@ class _HomeClassState extends State<HomeClass> {
                 if (result["result"] == "slider") ...{
                   slider_class(json_values: result["row_dt"]),
                 },
+                if (result["result"] == "menu") ...{
+                  HomePageMenuClass(),
+                },
                 if (result["result"] == "divisioncategory") ...{
                   home_box_title_class(title: result["row_title"]),
-                  Divider(
-                    color: Colors.black,
-                    thickness: 2.0,
-                  ),
+                  Divider(color: Colors.black, thickness: 2.0),
                   Container(
-                      child: Home_box_class(
-                        json_values: result["row_dt"],
-                      ),
+                      child: Home_box_class(json_values: result["row_dt"]),
                       height: 150),
                 },
                 if (result["result"] == "itemcategory") ...{
                   home_box_title_class(title: result["row_title"]),
-                  Divider(
-                    color: Colors.black,
-                    thickness: 2.0,
-                  ),
+                  Divider(color: Colors.black, thickness: 2.0),
                   Container(
-                      child: Home_box_class2(
-                        json_values: result["row_dt"],
-                      ),
+                      child: Home_box_class2(json_values: result["row_dt"]),
                       height: 300),
                 },
               },
