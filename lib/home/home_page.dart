@@ -94,7 +94,7 @@ class _HomeClassState extends State<HomeClass> {
                       child: Home_box_class(
                         json_values: result["row_dt"],
                       ),
-                      height: 150),
+                      height: 151),
                 },
                 if (result["result"] == "itemcategory") ...{
                   home_box_title_class(title: result["row_title"]),
