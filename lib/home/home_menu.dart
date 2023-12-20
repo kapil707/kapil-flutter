@@ -10,94 +10,124 @@ class HomePageMenuClass extends StatelessWidget {
       spacing: 11,
       runSpacing: 11,
       children: [
-        Container(
-          width: 125,
-          height: 160,
-          child: Column(
-            children: [
-              Image.network(
-                "https://www.drdistributor.com/img_v51/homebtn1.png",
-                width: 125.0,
-                height: 125.0,
-                fit: BoxFit.cover,
-              ),
-              Text("New order"),
-            ],
+        InkWell(
+          onTap: () {
+            print("hello g check");
+          },
+          child: Container(
+            width: 112,
+            height: 160,
+            child: Column(
+              children: [
+                Image.network(
+                  "https://www.drdistributor.com/img_v51/homebtn1.png",
+                  width: 112.0,
+                  height: 112.0,
+                  fit: BoxFit.cover,
+                ),
+                Text("New order"),
+              ],
+            ),
           ),
         ),
-        Container(
-          width: 125,
-          height: 160,
-          child: Column(
-            children: [
-              Image.network(
-                "https://www.drdistributor.com/img_v51/homebtn2.png",
-                width: 125.0,
-                height: 125.0,
-                fit: BoxFit.cover,
-              ),
-              Text("Draft"),
-            ],
+        InkWell(
+          onTap: () {
+            print("hello g check");
+          },
+          child: Container(
+            width: 112,
+            height: 160,
+            child: Column(
+              children: [
+                Image.network(
+                  "https://www.drdistributor.com/img_v51/homebtn2.png",
+                  width: 112.0,
+                  height: 112.0,
+                  fit: BoxFit.cover,
+                ),
+                Text("Draft"),
+              ],
+            ),
           ),
         ),
-        Container(
-          width: 125,
-          height: 160,
-          child: Column(
-            children: [
-              Image.network(
-                "https://www.drdistributor.com/img_v51/homebtn3.png",
-                width: 125.0,
-                height: 125.0,
-                fit: BoxFit.cover,
-              ),
-              Text("My Order"),
-            ],
+        InkWell(
+          onTap: () {
+            print("hello g check");
+          },
+          child: Container(
+            width: 112,
+            height: 160,
+            child: Column(
+              children: [
+                Image.network(
+                  "https://www.drdistributor.com/img_v51/homebtn3.png",
+                  width: 112.0,
+                  height: 112.0,
+                  fit: BoxFit.cover,
+                ),
+                Text("My Order"),
+              ],
+            ),
           ),
         ),
-        Container(
-          width: 125,
-          height: 160,
-          child: Column(
-            children: [
-              Image.network(
-                "https://www.drdistributor.com/img_v51/homebtn4.png",
-                width: 125.0,
-                height: 125.0,
-                fit: BoxFit.cover,
-              ),
-              Text("My Invoice"),
-            ],
+        InkWell(
+          onTap: () {
+            print("hello g check");
+          },
+          child: Container(
+            width: 112,
+            height: 160,
+            child: Column(
+              children: [
+                Image.network(
+                  "https://www.drdistributor.com/img_v51/homebtn4.png",
+                  width: 112.0,
+                  height: 112.0,
+                  fit: BoxFit.cover,
+                ),
+                Text("My Invoice"),
+              ],
+            ),
           ),
         ),
-        Container(
-          width: 125,
-          height: 160,
-          child: Column(
-            children: [
-              Image.network(
-                "https://www.drdistributor.com/img_v51/homebtn5.png",
-                width: 125.0,
-                height: 125.0,
-                fit: BoxFit.cover,
-              ),
-              Text("Track order"),
-            ],
+        InkWell(
+          onTap: () {
+            print("hello g check");
+          },
+          child: Container(
+            width: 112,
+            height: 160,
+            child: Column(
+              children: [
+                Image.network(
+                  "https://www.drdistributor.com/img_v51/homebtn5.png",
+                  width: 112.0,
+                  height: 112.0,
+                  fit: BoxFit.cover,
+                ),
+                Text("Track order"),
+              ],
+            ),
           ),
         ),
-        Container(
-          width: 125,
-          height: 160,
-          child: Column(
-            children: [
-              Image.network(
-                "https://www.drdistributor.com/img_v51/homebtn7.png",
-                width: 125.0,
-                height: 125.0,
-                fit: BoxFit.cover,
-              ),
-              Text("Notification"),
-            ],
+        InkWell(
+          onTap: () {
+            print("hello g check");
+          },
+          child: Container(
+            width: 112,
+            height: 160,
+            child: Column(
+              children: [
+                Image.network(
+                  "https://www.drdistributor.com/img_v51/homebtn7.png",
+                  width: 112.0,
+                  height: 112.0,
+                  fit: BoxFit.cover,
+                ),
+                Text("Notification"),
+              ],
+            ),
           ),
         ),
       ],
