@@ -5,14 +5,14 @@ import 'package:kapil11/my_cart/my_cart_result.dart';
 import 'package:kapil11/utility/api_service.dart';
 import 'package:kapil11/widgets/custom_app_bar2.dart';
 
-class MyCartClass extends StatefulWidget {
-  const MyCartClass({super.key});
+class MyOrderClass extends StatefulWidget {
+  const MyOrderClass({super.key});
 
   @override
-  State<MyCartClass> createState() => _MyCartClassState();
+  State<MyOrderClass> createState() => _MyOrderClassState();
 }
 
-class _MyCartClassState extends State<MyCartClass> {
+class _MyOrderClassState extends State<MyOrderClass> {
   late Future<List<MyCartItem>> _dataListFuture;
   @override
   void initState() {

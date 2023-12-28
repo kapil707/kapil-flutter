@@ -37,7 +37,7 @@ class _MyCartClassState extends State<MyCartClass> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar2(page_title: "Search Medicine"),
+      appBar: CustomAppBar2(page_title: "My Cart"),
       body: Column(
         children: [
           FutureBuilder(
