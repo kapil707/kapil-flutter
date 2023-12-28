@@ -1,34 +1,36 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:kapil11/my_cart/my_cart_result.dart';
+import 'package:kapil11/my_notification/my_notification_result.dart';
 import 'package:kapil11/utility/api_service.dart';
 import 'package:kapil11/widgets/custom_app_bar2.dart';
 
-class MyCartClass extends StatefulWidget {
-  const MyCartClass({super.key});
+class MyNotificationClass extends StatefulWidget {
+  const MyNotificationClass({super.key});
 
   @override
-  State<MyCartClass> createState() => _MyCartClassState();
+  State<MyNotificationClass> createState() => _MyNotificationClassState();
 }
 
-class _MyCartClassState extends State<MyCartClass> {
-  late Future<List<MyCartItem>> _dataListFuture;
+class _MyNotificationClassState extends State<MyNotificationClass> {
+  late Future<List<MyNotificationItem>> _dataListFuture;
   @override
   void initState() {
     super.initState();
-    _dataListFuture = fetchMedicineData();
+    _dataListFuture = MyfetchData();
   }
 
-  Future<List<MyCartItem>> fetchMedicineData() async {
-    final response = await ApiService.my_cart_api();
+  Future<List<MyNotificationItem>> MyfetchData() async {
+    final response = await ApiService.my_notification_api();
 
     if (response.statusCode == 200) {
       var mybody = json.decode(response.body);
+      /*print("kapil ji");
+      print(mybody);*/
       List<dynamic> data = mybody[0]["items"];
-      List<MyCartItem> MyCartItems =
-          data.map((item) => MyCartItem.fromJson(item)).toList();
-      return MyCartItems;
+      List<MyNotificationItem> MyNotificationItems =
+          data.map((item) => MyNotificationItem.fromJson(item)).toList();
+      return MyNotificationItems;
     } else {
       throw Exception('Failed to load data');
     }
@@ -37,7 +39,7 @@ class _MyCartClassState extends State<MyCartClass> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar2(page_title: "Search Medicine"),
+      appBar: CustomAppBar2(page_title: "My Notification"),
       body: Column(
         children: [
           FutureBuilder(
@@ -65,10 +67,10 @@ class _MyCartClassState extends State<MyCartClass> {
               } else if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
               } else {
-                List<MyCartItem> dataList = snapshot.data as List<MyCartItem>;
+                List<MyNotificationItem> dataList = snapshot.data as List<MyNotificationItem>;
                 return Container(
                     height: MediaQuery.of(context).size.height - 150,
-                    child: MyCartList(dataList));
+                    child: MyNotificationList(dataList));
               }
             },
           ),

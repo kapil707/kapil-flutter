@@ -17,4 +17,10 @@ class AppUrls {
 
   static String my_order_api =
       "https://www.drdistributor.com/flutter_api/api01/my_order_api";
+
+  static String my_invoice_api =
+      "https://www.drdistributor.com/flutter_api/api01/my_invoice_api";
+
+  static String my_notification_api =
+      "https://www.drdistributor.com/flutter_api/api01/my_notification_api";
 }

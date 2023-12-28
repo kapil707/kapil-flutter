@@ -71,7 +71,39 @@ class ApiService {
       'user_altercode': 'v153',
       'user_password': 'f5bb0c8de146c67b44babbf4e6584cc0',
       'chemist_id': '',
-      'get_record': '',
+      'get_record': '12',
+    };
+    var uri = Uri.parse(_url);
+    var response = await http.post(uri, body: _body);
+    return response;
+  }
+
+  static Future<http.Response> my_invoice_api() async {
+    var _url = AppUrls.my_invoice_api;
+    var _body = {
+      'api_key': '98c08565401579448aad7c64033dcb4081906dcb',
+      'device_id': 'xxxx',
+      'user_type': 'chemist',
+      'user_altercode': 'v153',
+      'user_password': 'f5bb0c8de146c67b44babbf4e6584cc0',
+      'chemist_id': '',
+      'get_record': '12',
+    };
+    var uri = Uri.parse(_url);
+    var response = await http.post(uri, body: _body);
+    return response;
+  }
+
+  static Future<http.Response> my_notification_api() async {
+    var _url = AppUrls.my_notification_api;
+    var _body = {
+      'api_key': '98c08565401579448aad7c64033dcb4081906dcb',
+      'device_id': 'xxxx',
+      'user_type': 'chemist',
+      'user_altercode': 'v153',
+      'user_password': 'f5bb0c8de146c67b44babbf4e6584cc0',
+      'chemist_id': '',
+      'get_record': '12',
     };
     var uri = Uri.parse(_url);
     var response = await http.post(uri, body: _body);

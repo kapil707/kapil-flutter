@@ -17,10 +17,10 @@ class _MyCartClassState extends State<MyCartClass> {
   @override
   void initState() {
     super.initState();
-    _dataListFuture = fetchMedicineData();
+    _dataListFuture = MyfetchData();
   }
 
-  Future<List<MyCartItem>> fetchMedicineData() async {
+  Future<List<MyCartItem>> MyfetchData() async {
     final response = await ApiService.my_cart_api();
 
     if (response.statusCode == 200) {

@@ -17,15 +17,16 @@ class _MyOrderClassState extends State<MyOrderClass> {
   @override
   void initState() {
     super.initState();
-    _dataListFuture = fetchMedicineData();
+    _dataListFuture = MyfetchData();
   }
 
-  Future<List<MyOrderItem>> fetchMedicineData() async {
-    final response = await ApiService.my_cart_api();
+  Future<List<MyOrderItem>> MyfetchData() async {
+    final response = await ApiService.my_order_api();
 
     if (response.statusCode == 200) {
       var mybody = json.decode(response.body);
-      print(mybody[0]["items"]);
+      /*print("kapil ji");
+      print(mybody);*/
       List<dynamic> data = mybody[0]["items"];
       List<MyOrderItem> MyOrderItems =
           data.map((item) => MyOrderItem.fromJson(item)).toList();

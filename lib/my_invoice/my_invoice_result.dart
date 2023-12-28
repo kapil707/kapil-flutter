@@ -2,69 +2,39 @@
 import 'package:flutter/material.dart';
 import 'package:kapil11/medicine_details/medicine_details_page.dart';
 
-class MyCartItem {
+class MyInvoiceItem {
   final String itemId;
-  final String itemCode;
-  final int itemQuantity;
-  final int itemOrderQuantity;
-  final String itemImage;
-  final String itemName;
-  final String itemPacking;
-  final String itemExpiry;
-  final String itemCompany;
-  final String itemScheme;
-  final double itemMargin;
-  final int itemFeatured;
-  final double itemPrice;
-  final double itemQuantityPrice;
+  final String itemTitle;
+  final String itemMessage;
   final String itemDateTime;
-  final String itemModalNumber;
+  final String itemImage;
+  final String getRecord;
 
-  MyCartItem({
+  MyInvoiceItem({
     required this.itemId,
-    required this.itemCode,
-    required this.itemQuantity,
-    required this.itemOrderQuantity,
-    required this.itemImage,
-    required this.itemName,
-    required this.itemPacking,
-    required this.itemExpiry,
-    required this.itemCompany,
-    required this.itemScheme,
-    required this.itemMargin,
-    required this.itemFeatured,
-    required this.itemPrice,
-    required this.itemQuantityPrice,
+    required this.itemTitle,
+    required this.itemMessage,
     required this.itemDateTime,
-    required this.itemModalNumber,
+    required this.itemImage,
+    required this.getRecord,
   });
 
-  factory MyCartItem.fromJson(Map<String, dynamic> json) {
-    return MyCartItem(
+  factory MyInvoiceItem.fromJson(Map<String, dynamic> json) {
+    return MyInvoiceItem(
       itemId: json['item_id'],
-      itemCode: json['item_code'],
-      itemQuantity: int.parse(json['item_quantity']),
-      itemOrderQuantity: int.parse(json['item_order_quantity']),
+      itemTitle: json['item_title'],
+      itemMessage: json['item_message'],
+      itemDateTime: json['item_date_time'],
       itemImage: json['item_image'],
-      itemName: json['item_name'],
-      itemPacking: json['item_packing'],
-      itemExpiry: json['item_expiry'],
-      itemCompany: json['item_company'],
-      itemScheme: json['item_scheme'],
-      itemMargin: double.parse(json['item_margin']),
-      itemFeatured: int.parse(json['item_featured']),
-      itemPrice: double.parse(json['item_price']),
-      itemQuantityPrice: double.parse(json['item_quantity_price']),
-      itemDateTime: (json['item_datetime']),
-      itemModalNumber: json['item_modalnumber'],
+      getRecord: json['get_record'],
     );
   }
 }
 
-class MyCartList extends StatelessWidget {
-  final List<MyCartItem> dataList;
+class MyInvoiceList extends StatelessWidget {
+  final List<MyInvoiceItem> dataList;
 
-  MyCartList(this.dataList);
+  MyInvoiceList(this.dataList);
 
   @override
   Widget build(BuildContext context) {
@@ -75,13 +45,13 @@ class MyCartList extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
             onTap: () {
-              print(dataList[index].itemName);
+              //print(dataList[index].itemName);
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => MedicineDetailsClass(
-                      itemCode: dataList[index].itemCode,
-                      itemName: dataList[index].itemName,
+                      itemCode: dataList[index].itemId,
+                      itemName: dataList[index].itemTitle,
                       itemImage: dataList[index].itemImage),
                 ),
               );
@@ -113,11 +83,11 @@ class MyCartList extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          dataList[index].itemName,
+                          dataList[index].itemTitle,
                           textAlign: TextAlign.left,
                         ),
                         Text(
-                          dataList[index].itemCompany,
+                          dataList[index].itemMessage,
                           textAlign: TextAlign.left,
                         ),
                       ],
