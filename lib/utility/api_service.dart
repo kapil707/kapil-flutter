@@ -62,7 +62,6 @@ class ApiService {
     return response;
   }
 
-
   static Future<http.Response> my_order_api() async {
     var _url = AppUrls.my_order_api;
     var _body = {
@@ -72,6 +71,7 @@ class ApiService {
       'user_altercode': 'v153',
       'user_password': 'f5bb0c8de146c67b44babbf4e6584cc0',
       'chemist_id': '',
+      'get_record': '',
     };
     var uri = Uri.parse(_url);
     var response = await http.post(uri, body: _body);

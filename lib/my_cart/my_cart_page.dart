@@ -25,6 +25,7 @@ class _MyCartClassState extends State<MyCartClass> {
 
     if (response.statusCode == 200) {
       var mybody = json.decode(response.body);
+      print(mybody[0]["items"]);
       List<dynamic> data = mybody[0]["items"];
       List<MyCartItem> MyCartItems =
           data.map((item) => MyCartItem.fromJson(item)).toList();

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:kapil11/my_cart/my_cart_result.dart';
+import 'package:kapil11/my_order/my_order_result.dart';
 import 'package:kapil11/utility/api_service.dart';
 import 'package:kapil11/widgets/custom_app_bar2.dart';
 
@@ -13,22 +13,23 @@ class MyOrderClass extends StatefulWidget {
 }
 
 class _MyOrderClassState extends State<MyOrderClass> {
-  late Future<List<MyCartItem>> _dataListFuture;
+  late Future<List<MyOrderItem>> _dataListFuture;
   @override
   void initState() {
     super.initState();
     _dataListFuture = fetchMedicineData();
   }
 
-  Future<List<MyCartItem>> fetchMedicineData() async {
+  Future<List<MyOrderItem>> fetchMedicineData() async {
     final response = await ApiService.my_cart_api();
 
     if (response.statusCode == 200) {
       var mybody = json.decode(response.body);
+      print(mybody[0]["items"]);
       List<dynamic> data = mybody[0]["items"];
-      List<MyCartItem> MyCartItems =
-          data.map((item) => MyCartItem.fromJson(item)).toList();
-      return MyCartItems;
+      List<MyOrderItem> MyOrderItems =
+          data.map((item) => MyOrderItem.fromJson(item)).toList();
+      return MyOrderItems;
     } else {
       throw Exception('Failed to load data');
     }
@@ -37,7 +38,7 @@ class _MyOrderClassState extends State<MyOrderClass> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar2(page_title: "Search Medicine"),
+      appBar: CustomAppBar2(page_title: "My Order"),
       body: Column(
         children: [
           FutureBuilder(
@@ -65,10 +66,10 @@ class _MyOrderClassState extends State<MyOrderClass> {
               } else if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
               } else {
-                List<MyCartItem> dataList = snapshot.data as List<MyCartItem>;
+                List<MyOrderItem> dataList = snapshot.data as List<MyOrderItem>;
                 return Container(
                     height: MediaQuery.of(context).size.height - 150,
-                    child: MyCartList(dataList));
+                    child: MyOrderList(dataList));
               }
             },
           ),

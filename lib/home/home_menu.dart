@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kapil11/medicine_search/medicine_search_page.dart';
 import 'package:kapil11/my_cart/my_cart_page.dart';
+import 'package:kapil11/my_order/my_order_page.dart';
 
 class HomePageMenuClass extends StatelessWidget {
   const HomePageMenuClass({super.key});
@@ -66,7 +67,13 @@ class HomePageMenuClass extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            print("hello g check");
+            //print("hello g check");
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => MyOrderClass(),
+              ),
+            );
           },
           child: Container(
             width: 112,
