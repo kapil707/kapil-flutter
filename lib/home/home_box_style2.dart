@@ -85,11 +85,10 @@ class _Home_box_class2State extends State<Home_box_class2> {
                           child: Center(child: Text("MRP. "+imageList[index]['item_price']!+"/-"),),),
                     ],
                   ),
-                
-              ],
+                ],
+              ),
             ),
           ),
-        ),
         );
       },
     );
