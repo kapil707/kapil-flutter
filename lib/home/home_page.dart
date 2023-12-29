@@ -86,6 +86,7 @@ class _HomeClassState extends State<HomeClass> {
                   slider_class(json_values: result["row_dt"]),
                 },
                 if (result["result"] == "menu") ...{
+                  Container(height: 15),
                   HomePageMenuClass(),
                 },
                 if (result["result"] == "divisioncategory") ...{

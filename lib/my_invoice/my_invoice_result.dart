@@ -33,14 +33,38 @@ class MyInvoiceItem {
 
 class MyInvoiceList extends StatelessWidget {
   final List<MyInvoiceItem> dataList;
+  final ScrollController _scrollController;
+  final bool _isLoading;
 
-  MyInvoiceList(this.dataList);
+  MyInvoiceList(this.dataList,this._scrollController,this._isLoading);
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: dataList.length,
+      controller: _scrollController,
+      itemCount: dataList.length + 1,
       itemBuilder: (context, index) {
+        if (index == dataList.length) {
+            // Loading indicator when reaching the end
+            return _isLoading ?Container(
+                  height: 150,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Center(
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          child: CircularProgressIndicator(),
+                        ),
+                      ),
+                      Container(height: 11),
+                      Text("Loading....")
+                    ],
+                  ),
+                ) : Container();
+          } else{
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
@@ -98,6 +122,7 @@ class MyInvoiceList extends StatelessWidget {
             ),
           ),
         );
+          }
       },
     );
   }

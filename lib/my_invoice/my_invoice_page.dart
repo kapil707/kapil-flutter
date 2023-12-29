@@ -14,23 +14,87 @@ class MyInvoiceClass extends StatefulWidget {
 
 class _MyInvoiceClassState extends State<MyInvoiceClass> {
   late Future<List<MyInvoiceItem>> _dataListFuture;
+  late ScrollController _scrollController;
+  bool _isLoading = false;
+  List<MyInvoiceItem> _dataList = [];
+
+  int get_record = 0;
   @override
   void initState() {
     super.initState();
-    _dataListFuture = MyfetchData();
+    _scrollController = ScrollController();
+    _dataListFuture = MyfetchData(get_record);
+    _scrollController.addListener(_scrollListener);
   }
 
-  Future<List<MyInvoiceItem>> MyfetchData() async {
-    final response = await ApiService.my_invoice_api();
+    void _scrollListener() {
+    if (_scrollController.position.pixels ==
+        _scrollController.position.maxScrollExtent) {
+          _loadMoreData();
+      // User has scrolled to the end, load more data
+      // if (!_isLoading) {
+      //   _loadMoreData();
+      // }
+    }
+  }
+
+
+  Future<List<MyInvoiceItem>> MyfetchData(get_record) async {
+    final response = await ApiService.my_invoice_api(get_record);
 
     if (response.statusCode == 200) {
       var mybody = json.decode(response.body);
-      /*print("kapil ji");
-      print(mybody);*/
+      print("kapil ji");
+      print(mybody);
       List<dynamic> data = mybody[0]["items"];
       List<MyInvoiceItem> MyInvoiceItems =
           data.map((item) => MyInvoiceItem.fromJson(item)).toList();
       return MyInvoiceItems;
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
+
+
+    void _loadMoreData() async {
+    setState(() {
+      _isLoading = true;
+      get_record = get_record + 12;
+      print(get_record);
+    });
+
+    // Simulate a delay for fetching more data
+    await Future.delayed(Duration(seconds: 2));
+
+    MyfetchMoreData(get_record);
+
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void MyfetchMoreData(get_record) async {
+    final response = await ApiService.my_invoice_api(get_record);
+
+    if (response.statusCode == 200) {
+      var mybody = json.decode(response.body);
+      // print("kapil ji");
+      // print(mybody);
+      List<dynamic> data = mybody[0]["items"];
+      List<MyInvoiceItem> MyInvoiceItems =
+          data.map((item) => MyInvoiceItem.fromJson(item)).toList();
+      //return MyInvoiceItems;
+
+      setState(() {
+        _dataList.addAll(MyInvoiceItems);
+        _isLoading = false;
+      });
     } else {
       throw Exception('Failed to load data');
     }
@@ -67,10 +131,10 @@ class _MyInvoiceClassState extends State<MyInvoiceClass> {
               } else if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
               } else {
-                List<MyInvoiceItem> dataList = snapshot.data as List<MyInvoiceItem>;
+                _dataList = snapshot.data as List<MyInvoiceItem>;
                 return Container(
                     height: MediaQuery.of(context).size.height - 150,
-                    child: MyInvoiceList(dataList));
+                    child: MyInvoiceList(_dataList,_scrollController,_isLoading));
               }
             },
           ),

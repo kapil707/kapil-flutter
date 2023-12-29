@@ -74,7 +74,10 @@ class _SplashScreenClassState extends State<SplashScreenClass> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            CircularProgressIndicator(),
+            Image.asset(
+                  'assets/images/logo4.png',
+                  width: 100,
+                ),
             Container(height: 11),
             Text(
               'D.R. Distributor',
@@ -84,6 +87,7 @@ class _SplashScreenClassState extends State<SplashScreenClass> {
                 color: Colors.white,
               ),
             ),
+            CircularProgressIndicator(),
             Container(height: 100),
             Center(
               child: const Text(
