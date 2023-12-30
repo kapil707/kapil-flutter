@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:kapil11/medicine_details/medicine_details_page.dart';
+import 'package:kapil11/my_order/my_order_details_page.dart';
 
 class MyOrderItem {
   final String itemId;
@@ -49,7 +49,7 @@ class MyOrderList extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => MedicineDetailsClass(
+                  builder: (context) => MyOrderDetailsClass(
                       itemCode: dataList[index].itemId,
                       itemName: dataList[index].itemTitle,
                       itemImage: dataList[index].itemImage),
