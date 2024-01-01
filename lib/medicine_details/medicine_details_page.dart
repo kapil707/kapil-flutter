@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:kapil11/medicine_details/medicine_details_result.dart';
 import 'package:kapil11/uitheme/style.dart';
 import 'package:kapil11/utility/api_service.dart';
 
@@ -30,6 +31,7 @@ class _MedicineDetailsClassState extends State<MedicineDetailsClass> {
   var itemCode;
   var itemName;
   var itemImage;
+  var item_packing;
 
   @override
   void initState() {
@@ -37,65 +39,111 @@ class _MedicineDetailsClassState extends State<MedicineDetailsClass> {
     itemCode = widget.itemCode;
     itemName = widget.itemName;
     itemImage = widget.itemImage;
-    //print("kepil ji");
+    item_packing = "sadfsdaf";
+    print("kepil ji");
+    fetchMedicineData(itemCode);
+    print("kepil ji end");
+  }
+
+  fetchMedicineData(_itemCode) async {
+    final response = await ApiService.medicine_details_api(_itemCode);
+    if (response.statusCode == 200) {
+      var mybody = json.decode(response.body);
+      var dt = mybody["items"];
+      print(mybody);
+      setState(() {            
+        item_packing = dt[0]["item_packing"].toString();
+      });
+    } 
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar2(page_title: "Medicine Details"),
+      appBar: CustomAppBar2(page_title: "Medicine Details",page_title2: itemCode),
       body: Stack(
         children: [
+          Container(
+                  height: MediaQuery.of(context).size.height - 90,
+                  width: MediaQuery.of(context).size.width,
+                child:SingleChildScrollView(
+              child: 
           // Main content
           Container(
             // Adjust this height based on your main content
-            height: MediaQuery.of(context).size.height - 100,
-            width: MediaQuery.of(context).size.width,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Image.network(
-                    itemImage,
-                    height: 300, // Specify the height you want
-                    width: 300, // Specify the width you want
-                    fit: BoxFit.cover,
+                  child: Center(
+                    child: Image.network(
+                      itemImage,
+                      height: 300, // Specify the height you want
+                      width: 300, // Specify the width you want
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
+
                 Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                  child: Wrap(
+                      direction: Axis.horizontal,
+                      spacing: 11,
+                      runSpacing: 11,
+                      children: [
                       Image.network(
                         itemImage,
-                        height: 60, // Specify the height you want
-                        width: 60, // Specify the width you want
+                        height: 82, // Specify the height you want
+                        width: 82, // Specify the width you want
                         fit: BoxFit.cover,
                       ),
                       Image.network(
                         itemImage,
-                        height: 60, // Specify the height you want
-                        width: 60, // Specify the width you want
+                        height: 82, // Specify the height you want
+                        width: 82, // Specify the width you want
                         fit: BoxFit.cover,
                       ),
                       Image.network(
                         itemImage,
-                        height: 60, // Specify the height you want
-                        width: 60, // Specify the width you want
+                        height: 82, // Specify the height you want
+                        width: 82, // Specify the width you want
                         fit: BoxFit.cover,
                       ),
                       Image.network(
                         itemImage,
-                        height: 60, // Specify the height you want
-                        width: 60, // Specify the width you want
+                        height: 82, // Specify the height you want
+                        width: 82, // Specify the width you want
                         fit: BoxFit.cover,
-                      ),
-                    ],
-                  ),
+                      ),]
+                    ),
                 ),
-                Text(itemName,style: TextStyle(color: Colors.black, fontSize: 25)),
-              ],
-            ),
+
+                 Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(itemName,style: TextStyle(color: Colors.black, fontSize: 25)),
+                        Text(item_packing,style: TextStyle(color: Colors.black, fontSize: 25)),
+                        Text(itemName,style: TextStyle(color: Colors.black, fontSize: 25)),
+                        Text(itemName,style: TextStyle(color: Colors.black, fontSize: 25)),Text(itemName,style: TextStyle(color: Colors.black, fontSize: 25)),
+                        Text(itemName,style: TextStyle(color: Colors.black, fontSize: 25)),
+                        Text(itemName,style: TextStyle(color: const Color.fromARGB(255, 152, 144, 144), fontSize: 25)),
+                        Text(itemName,style: TextStyle(color: Colors.black, fontSize: 25)),
+                        Text(itemName,style: TextStyle(color: Colors.black, fontSize: 25)),
+                        Text(itemName,style: TextStyle(color: Colors.black, fontSize: 25)),
+                        Text(itemName,style: TextStyle(color: Colors.black, fontSize: 25)),
+                        Text(itemName,style: TextStyle(color: Colors.black, fontSize: 25)),
+                        Container(height: 100,)
+                      ],
+                    ),
+                  ),
+
+                ])))
           ),
           // Footer
           Positioned(

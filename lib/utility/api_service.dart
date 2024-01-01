@@ -17,11 +17,33 @@ class ApiService {
     return response;
   }
 
-  static Future<http.Response> searchMedicine(String _keyword) async {
-    var _url = AppUrls.search_page;
+  static Future<http.Response> search_page_api(String _keyword) async {
+    var _url = AppUrls.search_page_api;
     var _body = {
       'api_key': AppUrls.api_key,
       'keyword': _keyword,
+    };
+    var uri = Uri.parse(_url);
+    var response = await http.post(uri, body: _body);
+    return response;
+  }
+
+  static Future<http.Response> medicine_details_api(item_code) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? user_type = prefs.getString('user_type');
+    String? user_altercode = prefs.getString('user_altercode');
+    String? user_password = prefs.getString('user_password');
+    String? chemist_id = "";
+
+    var _url = AppUrls.medicine_details_api;
+    var _body = {
+      'api_key': AppUrls.api_key,
+      'user_type': user_type,
+      'user_altercode':user_altercode,
+      'user_password': user_password,
+      'chemist_id': chemist_id,
+      'device_id': 'xxxx',
+      'item_code':item_code
     };
     var uri = Uri.parse(_url);
     var response = await http.post(uri, body: _body);

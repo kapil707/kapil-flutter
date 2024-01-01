@@ -27,7 +27,7 @@ class _MedicineSearchClassState extends State<MedicineSearchClass> {
     // Implement your data fetching logic here
     // For example, you might call your API using the ApiService
 
-    final response = await ApiService.searchMedicine(textFieldValue);
+    final response = await ApiService.search_page_api(textFieldValue);
 
     if (response.statusCode == 200) {
       var mybody = json.decode(response.body);
