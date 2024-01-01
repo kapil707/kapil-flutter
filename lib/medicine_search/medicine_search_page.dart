@@ -15,7 +15,8 @@ class _MedicineSearchClassState extends State<MedicineSearchClass> {
   var username = TextEditingController();
   String textFieldValue = '';
   late Future<List<MedicineItem>> _dataListFuture;
-
+  late int page_loading = 0;
+  late String mytest = "x1";
   @override
   void initState() {
     super.initState();
@@ -26,9 +27,17 @@ class _MedicineSearchClassState extends State<MedicineSearchClass> {
   Future<List<MedicineItem>> fetchMedicineData() async {
     // Implement your data fetching logic here
     // For example, you might call your API using the ApiService
+    setState(() {
+      page_loading = 1;
+      mytest = "x2";
+    });
 
     final response = await ApiService.search_page_api(textFieldValue);
 
+    setState(() {
+      page_loading = 0;
+      mytest = "x3";
+    });
     if (response.statusCode == 200) {
       var mybody = json.decode(response.body);
       List<dynamic> data = mybody["items"];
@@ -58,7 +67,10 @@ class _MedicineSearchClassState extends State<MedicineSearchClass> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar2(page_title: "Search Medicine"),
+      appBar: CustomAppBar2(
+          page_title: "Search Medicine",
+          page_title2: "$mytest",
+          page_loading: page_loading),
       body: Column(
         children: [
           Padding(
@@ -100,13 +112,14 @@ class _MedicineSearchClassState extends State<MedicineSearchClass> {
                     snapshot.data as List<MedicineItem>;
                 if (dataList.isEmpty) {
                   return Container(
-                      height: MediaQuery.of(context).size.height - 300,
-                      child: Center(
-                        child: Image.network(
-                          "https://www.drdistributor.com//img_v51/no_record_found.png",
-                          fit: BoxFit.cover,
-                        ),
-                      ));
+                    height: MediaQuery.of(context).size.height - 300,
+                    child: Center(
+                      child: Image.network(
+                        "https://www.drdistributor.com//img_v51/no_record_found.png",
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  );
                 } else {
                   return Container(
                       height: MediaQuery.of(context).size.height - 200,

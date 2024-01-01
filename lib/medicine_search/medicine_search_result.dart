@@ -87,8 +87,20 @@ class MedicineSearchList extends StatelessWidget {
                 MaterialPageRoute(
                   builder: (context) => MedicineDetailsClass(
                       itemCode: dataList[index].itemCode,
+                      itemImage: dataList[index].itemImage,
                       itemName: dataList[index].itemName,
-                      itemImage: dataList[index].itemImage),
+                      itemPacking: dataList[index].itemPacking,
+                      itemExpiry: dataList[index].itemExpiry,
+                      itemCompany: dataList[index].itemCompany,
+                      itemQuantity: dataList[index].itemQuantity,
+                      itemStock: dataList[index].itemStock,
+                      itemPtr: dataList[index].itemPtr,
+                      itemMrp: dataList[index].itemMrp,
+                      itemPrice: dataList[index].itemPrice,
+                      itemScheme: dataList[index].itemScheme,
+                      itemMargin: dataList[index].itemMargin,
+                      itemFeatured: dataList[index].itemFeatured,
+                      itemDescription: dataList[index].itemDescription),
                 ),
               );
             },

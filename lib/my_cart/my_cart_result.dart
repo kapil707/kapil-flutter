@@ -76,15 +76,15 @@ class MyCartList extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               print(dataList[index].itemName);
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MedicineDetailsClass(
-                      itemCode: dataList[index].itemCode,
-                      itemName: dataList[index].itemName,
-                      itemImage: dataList[index].itemImage),
-                ),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => MedicineDetailsClass(
+              //         itemCode: dataList[index].itemCode,
+              //         itemName: dataList[index].itemName,
+              //         itemImage: dataList[index].itemImage),
+              //   ),
+              // );
             },
             child: Container(
               decoration: BoxDecoration(

@@ -36,7 +36,7 @@ class MyInvoiceList extends StatelessWidget {
   final ScrollController _scrollController;
   final bool _isLoading;
 
-  MyInvoiceList(this.dataList,this._scrollController,this._isLoading);
+  MyInvoiceList(this.dataList, this._scrollController, this._isLoading);
 
   @override
   Widget build(BuildContext context) {
@@ -45,8 +45,9 @@ class MyInvoiceList extends StatelessWidget {
       itemCount: dataList.length + 1,
       itemBuilder: (context, index) {
         if (index == dataList.length) {
-            // Loading indicator when reaching the end
-            return _isLoading ?Container(
+          // Loading indicator when reaching the end
+          return _isLoading
+              ? Container(
                   height: 150,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -63,66 +64,67 @@ class MyInvoiceList extends StatelessWidget {
                       Text("Loading....")
                     ],
                   ),
-                ) : Container();
-          } else{
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: GestureDetector(
-            onTap: () {
-              //print(dataList[index].itemName);
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MedicineDetailsClass(
-                      itemCode: dataList[index].itemId,
-                      itemName: dataList[index].itemTitle,
-                      itemImage: dataList[index].itemImage),
+                )
+              : Container();
+        } else {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GestureDetector(
+              onTap: () {
+                //print(dataList[index].itemName);
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => MedicineDetailsClass(
+                //         itemCode: dataList[index].itemId,
+                //         itemName: dataList[index].itemTitle,
+                //         itemImage: dataList[index].itemImage),
+                //   ),
+                // );
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  // Set your desired color
+                  borderRadius: BorderRadius.circular(10.0),
                 ),
-              );
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                // Set your desired color
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Image.network(
-                    dataList[index].itemImage,
-                    height: 64, // Specify the height you want
-                    width: 64, // Specify the width you want
-                    fit: BoxFit.cover,
-                  ),
-                  Container(
-                    width: 11,
-                  ),
-                  Container(
-                    width: 300,
-                    alignment: Alignment.centerLeft,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          dataList[index].itemTitle,
-                          textAlign: TextAlign.left,
-                        ),
-                        Text(
-                          dataList[index].itemMessage,
-                          textAlign: TextAlign.left,
-                        ),
-                      ],
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Image.network(
+                      dataList[index].itemImage,
+                      height: 64, // Specify the height you want
+                      width: 64, // Specify the width you want
+                      fit: BoxFit.cover,
                     ),
-                  ),
-                ],
+                    Container(
+                      width: 11,
+                    ),
+                    Container(
+                      width: 300,
+                      alignment: Alignment.centerLeft,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            dataList[index].itemTitle,
+                            textAlign: TextAlign.left,
+                          ),
+                          Text(
+                            dataList[index].itemMessage,
+                            textAlign: TextAlign.left,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        );
-          }
+          );
+        }
       },
     );
   }

@@ -30,59 +30,82 @@ class _Home_box_class2State extends State<Home_box_class2> {
       itemCount: imageList.length,
       itemBuilder: (context, index) {
         return Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: GestureDetector(
-              onTap: () {
-                //print(dataList[index].itemName);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MedicineDetailsClass(
-                        itemCode: imageList[index]['item_code'],
-                        itemName: imageList[index]['item_name'],
-                        itemImage: imageList[index]['item_image']),
+          padding: const EdgeInsets.all(5.0),
+          child: GestureDetector(
+            onTap: () {
+              //print(dataList[index].itemName);
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => MedicineDetailsClass(
+              //         itemCode: imageList[index]['item_code'],
+              //         itemName: imageList[index]['item_name'],
+              //         itemImage: imageList[index]['item_image']),
+              //   ),
+              // );
+            },
+            child: Container(
+              width: 125,
+              height: 300,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                // Set your desired color
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.network(
+                      imageList[index]['item_image']!,
+                      width: 100.0,
+                      height: 100.0,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                );
-              },
-              child: Container(
-            width: 125,
-            height: 300,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              // Set your desired color
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.network(
-                    imageList[index]['item_image']!,
-                    width: 100.0,
-                    height: 100.0,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                Column(
+                  Column(
                     children: [
                       Container(
-                          height: 40,
-                          child: Center(child: Text(imageList[index]['item_name']!),),),
-                          Container(
-                          height: 20,
-                          child: Center(child: Text(imageList[index]['item_margin']!+" Margin*"),),),
-                          Container(
-                          height: 20,
-                          child: Center(child: Text("by "+imageList[index]['item_company']!),),),
-                          Container(
-                          height: 20,
-                          child: Center(child: Text("MRP. "+imageList[index]['item_mrp']!+"/-"),),),
-                          Container(
-                          height: 20,
-                          child: Center(child: Text("MRP. "+imageList[index]['item_ptr']!+"/-"),),),
-                          Container(
-                          height: 20,
-                          child: Center(child: Text("MRP. "+imageList[index]['item_price']!+"/-"),),),
+                        height: 40,
+                        child: Center(
+                          child: Text(imageList[index]['item_name']!),
+                        ),
+                      ),
+                      Container(
+                        height: 20,
+                        child: Center(
+                          child: Text(
+                              imageList[index]['item_margin']! + " Margin*"),
+                        ),
+                      ),
+                      Container(
+                        height: 20,
+                        child: Center(
+                          child:
+                              Text("by " + imageList[index]['item_company']!),
+                        ),
+                      ),
+                      Container(
+                        height: 20,
+                        child: Center(
+                          child: Text(
+                              "MRP. " + imageList[index]['item_mrp']! + "/-"),
+                        ),
+                      ),
+                      Container(
+                        height: 20,
+                        child: Center(
+                          child: Text(
+                              "MRP. " + imageList[index]['item_ptr']! + "/-"),
+                        ),
+                      ),
+                      Container(
+                        height: 20,
+                        child: Center(
+                          child: Text(
+                              "MRP. " + imageList[index]['item_price']! + "/-"),
+                        ),
+                      ),
                     ],
                   ),
                 ],

@@ -46,15 +46,15 @@ class MyOrderList extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               //print(dataList[index].itemName);
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MedicineDetailsClass(
-                      itemCode: dataList[index].itemId,
-                      itemName: dataList[index].itemTitle,
-                      itemImage: dataList[index].itemImage),
-                ),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => MedicineDetailsClass(
+              //         itemCode: dataList[index].itemId,
+              //         itemName: dataList[index].itemTitle,
+              //         itemImage: dataList[index].itemImage),
+              //   ),
+              // );
             },
             child: Container(
               decoration: BoxDecoration(
