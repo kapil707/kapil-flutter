@@ -49,10 +49,7 @@ class MyOrderList extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => MyOrderDetailsClass(
-                      itemCode: dataList[index].itemId,
-                      itemName: dataList[index].itemTitle,
-                      itemImage: dataList[index].itemImage),
+                  builder: (context) => MyOrderDetailsClass(),
                 ),
               );
             },

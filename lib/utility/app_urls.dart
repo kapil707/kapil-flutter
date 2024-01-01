@@ -1,4 +1,5 @@
 class AppUrls {
+  static String api_key = "98c08565401579448aad7c64033dcb4081906dcb";
   
   static String login_api =
       "https://www.drdistributor.com/flutter_api/api01/login_api";

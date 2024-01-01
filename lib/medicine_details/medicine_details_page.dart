@@ -93,66 +93,71 @@ class _MedicineDetailsClassState extends State<MedicineDetailsClass> {
                     ],
                   ),
                 ),
-                Text(itemName),
+                Text(itemName,style: TextStyle(color: Colors.black, fontSize: 25)),
               ],
             ),
           ),
           // Footer
           Positioned(
             bottom: 0,
-            left: 0,
-            right: 0,
+            left: 10,
+            right: 10,
             child: Container(
-              height: 120,
-              color: Colors.green,
-              child: Column(
-                children: [
-                  Text(
-                    'Order Quantity',
-                    style: TextStyle(color: Colors.white, fontSize: 25),
-                  ),
-                  Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            width: 120,
-                            height: 40,
-                            child: MyTextField(
-                              mytextController: order_qty,
-                              myhintText: "Enter Quantity....",
-                              myprefixIcon: Icon(Icons.add),
+              decoration: BoxDecoration(
+              color: Colors.amberAccent,
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Text(
+                      'Order Quantity',
+                      style: TextStyle(color: Colors.black, fontSize: 18),
+                    ),
+                    Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Container(
+                              alignment: Alignment.topLeft,
+                              width: 100,
+                              height: 50,
+                              child: AddToCartInputBox(
+                                mytextController: order_qty,
+                                myhintText: "Enter Qty",
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Mybutton(
-                            btnName: "Add To Cart",
-                            btnStyle: mTextStyle11(),
-                            callBack: () async {
-                              String _item_order_quantity =
-                                  order_qty.text.toString();
-                              final response =
-                                  await ApiService.medicine_add_to_cart_api(
-                                      _item_order_quantity, itemCode);
-                              var body = response.body;
-                              var json = jsonDecode(body);
-                              //print(bb);
-                              var dt = json["items"];
-                              print(dt[0]["status"]);
-                              if (dt[0]["status"] == "1") {
-                                Navigator.pop(context);
-                              }
-                            },
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Mybutton(
+                              btnName: "Add To Cart",
+                              btnStyle: mTextStyle11(),
+                              callBack: () async {
+                                String _item_order_quantity =
+                                    order_qty.text.toString();
+                                final response =
+                                    await ApiService.medicine_add_to_cart_api(
+                                        _item_order_quantity, itemCode);
+                                var body = response.body;
+                                var json = jsonDecode(body);
+                                //print(bb);
+                                var dt = json["items"];
+                                print(dt[0]["status"]);
+                                if (dt[0]["status"] == "1") {
+                                  Navigator.pop(context);
+                                }
+                              },
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

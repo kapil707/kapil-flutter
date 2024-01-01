@@ -91,14 +91,14 @@ class _HomeClassState extends State<HomeClass> {
                 },
                 if (result["result"] == "divisioncategory") ...{
                   home_box_title_class(title: result["row_title"]),
-                  Divider(color: Colors.black, thickness: 2.0),
+                  //Divider(color: Colors.black, thickness: 2.0),
                   Container(
                       child: Home_box_class(json_values: result["row_dt"]),
                       height: 150),
                 },
                 if (result["result"] == "itemcategory") ...{
                   home_box_title_class(title: result["row_title"]),
-                  Divider(color: Colors.black, thickness: 2.0),
+                  //Divider(color: Colors.black, thickness: 2.0),
                   Container(
                       child: Home_box_class2(json_values: result["row_dt"]),
                       height: 300),

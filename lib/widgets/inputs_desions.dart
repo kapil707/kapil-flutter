@@ -172,3 +172,30 @@ class IconButtonWithText extends StatelessWidget {
     );
   }
 }
+
+class AddToCartInputBox extends StatelessWidget {
+  final TextEditingController mytextController;
+  final String? mylabelText;
+  final String? myhintText;
+  AddToCartInputBox({
+    required this.mytextController,
+    this.mylabelText,
+    this.myhintText,
+  });
+  @override
+  Widget build(Object context) {
+    return TextField(
+      controller: mytextController,
+      decoration: InputDecoration(
+        labelText: mylabelText,
+        hintText: myhintText,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(
+            color: Colors.pink,
+          ),
+        ),
+      ),
+    );
+  }
+}

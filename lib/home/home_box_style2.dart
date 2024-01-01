@@ -30,7 +30,7 @@ class _Home_box_class2State extends State<Home_box_class2> {
       itemCount: imageList.length,
       itemBuilder: (context, index) {
         return Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(5.0),
             child: GestureDetector(
               onTap: () {
                 //print(dataList[index].itemName);
@@ -58,8 +58,8 @@ class _Home_box_class2State extends State<Home_box_class2> {
                   padding: const EdgeInsets.all(8.0),
                   child: Image.network(
                     imageList[index]['item_image']!,
-                    width: 115.0,
-                    height: 90.0,
+                    width: 100.0,
+                    height: 100.0,
                     fit: BoxFit.cover,
                   ),
                 ),

@@ -29,10 +29,10 @@ class _Home_box_classState extends State<Home_box_class> {
       itemCount: imageList.length,
       itemBuilder: (context, index) {
         return Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(5.0),
           child: Container(
-            height: 125,
             width: 125,
+            height: 125,
             decoration: BoxDecoration(
               color: Colors.white,
               // Set your desired color
@@ -44,8 +44,8 @@ class _Home_box_classState extends State<Home_box_class> {
                   padding: const EdgeInsets.all(8.0),
                   child: Image.network(
                     imageList[index]['item_image']!,
-                    width: 115.0,
-                    height: 50.0,
+                    width: 110.0,
+                    height: 60.0,
                     fit: BoxFit.cover,
                   ),
                 ),
