@@ -1,4 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// custom_app_bar.dart
+
 import 'package:flutter/material.dart';
 
 class CustomAppBar2 extends StatefulWidget implements PreferredSizeWidget {
@@ -7,10 +8,11 @@ class CustomAppBar2 extends StatefulWidget implements PreferredSizeWidget {
   final int? page_loading;
 
   const CustomAppBar2({
+    Key? key,
     required this.page_title,
     this.page_title2,
     this.page_loading,
-  });
+  }) : super(key: key);
 
   @override
   State<CustomAppBar2> createState() => _CustomAppBar2State();
@@ -20,16 +22,23 @@ class CustomAppBar2 extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _CustomAppBar2State extends State<CustomAppBar2> {
-  var page_title;
-  var page_title2;
-  var page_loading;
+  late String page_title;
+  late String? page_title2;
+  late int? page_loading;
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     page_title = widget.page_title;
     page_title2 = widget.page_title2;
     page_loading = widget.page_loading;
+  }
+
+  // Method to hide the loading indicator
+  void hideLoading() {
+    setState(() {
+      page_loading = 0;
+    });
   }
 
   @override
@@ -49,7 +58,8 @@ class _CustomAppBar2State extends State<CustomAppBar2> {
                   style: TextStyle(color: Colors.black, fontSize: 20),
                 ),
                 Text(
-                  page_title2,
+                  page_title2 ??
+                      '', // Use an empty string if page_title2 is null
                   style: TextStyle(color: Colors.black, fontSize: 15),
                 ),
               ],
