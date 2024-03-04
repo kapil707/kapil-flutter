@@ -8,7 +8,6 @@ class Shared {
   static Future<bool> saveLoginSharedPreference(
                 islogin,
                 user_type,
-                user_id,
                 user_code,
                 user_altercode,
                 user_password,
@@ -20,7 +19,6 @@ class Shared {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool(loginSharedPreference, islogin);
     await prefs.setString("user_type", user_type);
-    await prefs.setString("user_id", user_id);
     await prefs.setString("user_code", user_code);
     await prefs.setString("user_altercode", user_altercode);
     await prefs.setString("user_password", user_password);

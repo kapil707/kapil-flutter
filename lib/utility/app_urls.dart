@@ -2,10 +2,13 @@ class AppUrls {
   static String api_key = "98c08565401579448aad7c64033dcb4081906dcb";
   
   static String login_api =
-      "https://www.drdistributor.com/flutter_api/api01/login_api";
+      "https://www.drdistributor.com/my_api/api46/get_login_api";
+
+  static String main_page_api =
+      "https://www.drdistributor.com/my_api/api46/main_page_api";
   
   static String home_page_api =
-      "https://www.drdistributor.com/flutter_api/api01/home_page_api";
+      "https://www.drdistributor.com/my_api/api46/home_page_api";
   
   static String search_page_api =
       "https://www.drdistributor.com/flutter_api/api01/medicine_search_api";

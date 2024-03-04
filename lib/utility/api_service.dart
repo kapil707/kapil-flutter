@@ -10,7 +10,63 @@ class ApiService {
     var _body = {
       'api_key': AppUrls.api_key,
       'user_name': _username,
-      'user_password': _password
+      'user_password': _password,
+      'firebase_token': ''
+    };
+    var uri = Uri.parse(_url);
+    var response = await http.post(uri, body: _body);
+    return response;
+  }
+
+  static Future<http.Response> main_page_api() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? user_type = prefs.getString('user_type');
+    String? user_altercode = prefs.getString('user_altercode');
+    String? user_password = prefs.getString('user_password');
+    String? chemist_id = "";
+    String? firebase_token = "";
+    String? device_id = "xxxx";
+    String? versioncode = "01";
+    String? getlatitude = "";
+    String? getlongitude = "";
+    String? gettime = "zz";
+    String? getdate = "xx";
+
+    var _url = AppUrls.main_page_api;
+    var _body = {
+      'api_key': AppUrls.api_key,
+      'user_type': user_type,
+      'user_altercode': user_altercode,
+      'user_password': user_password,
+      'chemist_id': chemist_id,
+      'firebase_token': firebase_token,
+      'device_id': device_id,
+      'versioncode': versioncode,
+      'getlatitude': getlatitude,
+      'getlongitude': getlongitude,
+      'gettime': gettime,
+      'getdate': getdate,
+    };
+    var uri = Uri.parse(_url);
+    var response = await http.post(uri, body: _body);
+    return response;
+  }
+
+  static Future<http.Response> home_page_api(String _seq_id) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? user_type = prefs.getString('user_type');
+    String? user_altercode = prefs.getString('user_altercode');
+    String? user_password = prefs.getString('user_password');
+    String? chemist_id = "";
+
+    var _url = AppUrls.home_page_api;
+    var _body = {
+      'api_key': AppUrls.api_key,
+      'user_type': user_type,
+      'user_altercode': user_altercode,
+      'user_password': user_password,
+      'chemist_id': chemist_id,
+      'seq_id': _seq_id,
     };
     var uri = Uri.parse(_url);
     var response = await http.post(uri, body: _body);

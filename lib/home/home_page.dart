@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:kapil11/home/home_box_title_style.dart';
 import 'package:kapil11/home/home_menu.dart';
+import 'package:kapil11/utility/api_service.dart';
 import 'package:kapil11/widgets/custom_app_bar.dart';
 import 'package:kapil11/home/home_box_style.dart';
 import 'package:kapil11/home/home_box_style2.dart';
@@ -9,67 +12,33 @@ import 'package:kapil11/widgets/slider_widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeClass extends StatefulWidget {
-  final json_values;
+  //final json_values;
 
-  HomeClass({
-    required this.json_values,
-  });
+  // HomeClass({
+  //   required this.json_values,
+  // });
 
   @override
   State<HomeClass> createState() => _HomeClassState();
 }
 
 class _HomeClassState extends State<HomeClass> {
-  var json_values;
+  var json_values = [];
   var user_name = "";
   @override
   void initState() {
     super.initState();
-    json_values = widget.json_values;
-    //print("kepil ji");
+    json_values = homepageapicall("1");//widget.json_values;
+    print("kepil ji");
   }
 
-  // List dataMapArray = [
-  //   {
-  //     "title": "Item 11",
-  //     "subtitle": "Subtitle 1",
-  //     "image_path":
-  //         "https://www.drdweb.co.in/uploads/manage_slider/photo/main/volini1.jpg"
-  //   },
-  //   {
-  //     "title": "Item 22",
-  //     "subtitle": "Subtitle 2",
-  //     "image_path":
-  //         "https://www.drdweb.co.in/uploads/manage_slider/photo/main/volini1.jpg"
-  //   },
-  //   {
-  //     "title": "Item 33",
-  //     "subtitle": "Subtitle 3",
-  //     "image_path":
-  //         "https://www.drdweb.co.in/uploads/manage_slider/photo/main/volini1.jpg"
-  //   }
-  // ];
+  homepageapicall(String seq_id) async {
+      final response = await ApiService.home_page_api(seq_id);
+      var mybody = json.decode(response.body);
+      final result = mybody[0]["items"];
+      print(result);
+  }
 
-  // List dataMapArray1 = [
-  //   {
-  //     "title": "Item 111",
-  //     "subtitle": "Subtitle 1",
-  //     "image_path":
-  //         "https://www.drdweb.co.in/uploads/manage_slider/photo/main/volini1.jpg"
-  //   },
-  //   {
-  //     "title": "Item 222",
-  //     "subtitle": "Subtitle 2",
-  //     "image_path":
-  //         "https://www.drdweb.co.in/uploads/manage_slider/photo/main/volini1.jpg"
-  //   },
-  //   {
-  //     "title": "Item 333",
-  //     "subtitle": "Subtitle 3",
-  //     "image_path":
-  //         "https://www.drdweb.co.in/uploads/manage_slider/photo/main/volini1.jpg"
-  //   }
-  // ];
 
   @override
   Widget build(BuildContext context) {

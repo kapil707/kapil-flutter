@@ -3,6 +3,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:kapil11/test.dart';
+import 'package:kapil11/utility/api_service.dart';
 import 'package:kapil11/utility/app_urls.dart';
 import 'package:kapil11/widgets/custom_app_bar.dart';
 import 'package:kapil11/home/home_page.dart';
@@ -32,20 +34,17 @@ class _SplashScreenClassState extends State<SplashScreenClass> {
     await Shared.getUserSharedPreferences().then((value) async {
       islogin = value;
       if (islogin == true) {
-        var _url = AppUrls.home_page_api;
-        var uri = Uri.parse(_url);
-        final response = await http.post(uri);
-        var body = response.body;
-        var json = jsonDecode(body);
-
-        //print(json);
-
+        final response = await ApiService.main_page_api();
+        var mybody = json.decode(response.body);
+        final result = mybody[0]["items"];
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => HomeClass(json_values: json),
+            //builder: (context) => HomeClass(json_values: json),
+            builder: (context) => Mytestclass(),
           ),
         );
+
         // Navigator.pushReplacement(
         //   context,
         //   MaterialPageRoute(
