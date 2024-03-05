@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 
 import 'package:flutter/material.dart';
 import 'package:kapil11/new_api.dart';
+import 'package:kapil11/new_login/login_model.dart';
 import 'package:kapil11/user.dart';
 import 'package:kapil11/utility/api_service.dart';
 
@@ -26,7 +27,7 @@ class _MytestclassState extends State<Mytestclass> {
           title: Text('Retrofit Example'),
         ),
         body: Center(
-          child: FutureBuilder<UserResponse>(
+          child: FutureBuilder<LoginModelResponse>(
             future: myApiService.get_login_api("xx","v153","123456789",""),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {

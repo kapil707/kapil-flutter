@@ -85,19 +85,19 @@ class _LoginClassState extends State<LoginClass> {
                           String _password = password.text.toString();
                           //print(ue);
                           //login_model.api_call(context, _username, _password);
-                          FutureBuilder<LoginModelResponse>(
-            future: myApiService.get_login_api("xx","v153","123456789",""),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator();
-              } else if (snapshot.hasError) {
-                return Text('Error: ${snapshot.error}');
-              } else {
-                final userItem = snapshot.data!.items.first;
-                return Text('Status Message: ${userItem.user_session}');
-              }
-            },
-          ),
+          //                 FutureBuilder<LoginModelResponse>(
+          //   future: myApiService.get_login_api("xx","v153","123456789",""),
+          //   builder: (context, snapshot) {
+          //     if (snapshot.connectionState == ConnectionState.waiting) {
+          //       return CircularProgressIndicator();
+          //     } else if (snapshot.hasError) {
+          //       return Text('Error: ${snapshot.error}');
+          //     } else {
+          //       final userItem = snapshot.data!.items.first;
+          //       return Text('Status Message: ${userItem.user_session}');
+          //     }
+          //   },
+          // ),
                         },
                       ),
                     ),
