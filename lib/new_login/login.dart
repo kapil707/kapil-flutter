@@ -2,9 +2,11 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:kapil11/login/login_model.dart';
 import 'package:kapil11/new_api.dart';
 import 'package:kapil11/new_login/login_model.dart';
+import 'package:kapil11/session.dart';
 import 'package:kapil11/splash_screen.dart';
 import 'package:kapil11/uitheme/style.dart';
 import 'package:kapil11/utility/api_service.dart';
@@ -21,10 +23,75 @@ class LoginClass extends StatefulWidget {
 }
 
 class _LoginClassState extends State<LoginClass> {
+  final apiService = MyApiService(Dio());
+
   var username = TextEditingController();
   var password = TextEditingController();
+  var login_status_message = "";
+  bool isLoading = false;
 
-  final MyApiService myApiService = MyApiService(Dio());
+  void _functionLogin(_context,String _username, String _password) async {
+    setState(() { isLoading = true; });
+    try {
+      final response = await apiService.get_login_api("xx",_username, _password,"");
+      final status = response.items.first.status;
+      final status_message = response.items.first.status_message;      
+      if(status.toString()=="0")
+      {
+        Fluttertoast.showToast(
+            msg: status_message,
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0
+        );
+        //AppAlertBox.showAlertDialog(_context, "Error", status_message);
+        setState(() {
+          isLoading = false;
+          login_status_message = status_message;
+        });
+      }
+      if(status.toString()=="1")
+      {
+        setState(() {
+          isLoading = false;
+          login_status_message = status_message;
+        });
+
+          var user_session = response.items.first.user_session;
+          var user_fname = response.items.first.user_fname;
+          var user_code = response.items.first.user_code;
+          var user_altercode = response.items.first.user_altercode;
+          var user_type = response.items.first.user_type;
+          var user_password = response.items.first.user_password;
+          var user_image = response.items.first.user_image;
+          var user_nrx = response.items.first.user_nrx;
+          // session me values set iss say hoti ha
+          Shared.saveLoginSharedPreference(
+                  true,
+                  user_type,
+                  user_code,
+                  user_altercode,
+                  user_password,
+                  user_image,
+                  user_fname,
+                  user_nrx)
+              .then((value) {});
+
+          Navigator.pushReplacement(
+            _context,
+            MaterialPageRoute(
+              builder: (context) => const SplashScreenClass(),
+            ),
+          );
+      }
+    } catch (e) {
+      // Handle login error
+      print('Login error: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,47 +128,43 @@ class _LoginClassState extends State<LoginClass> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(height: 92),
-                  Text("Enter UserName"),
+                  Text("Enter username"),
                   MyTextField(
                     mytextController: username,
-                    myhintText: "Enter UserName....",
+                    myhintText: "Enter username....",
                     myprefixIcon: Icon(Icons.account_box),
                   ),
                   Container(height: 11),
-                  Text("Enter Password"),
+                  Text("Enter password"),
                   MyPasswordTextField(
                     mytextController: password,
                   ),
                   Container(height: 11),
+                  Center(child: Text(login_status_message)),
+                  Container(height: 11),
                   Center(
-                    child: Container(
-                      width: 150,
-                      child: Mybutton(
-                        btnName: "Login",
-                        btnIcon: Icon(Icons.lock),
-                        btnStyle: mTextStyle11(),
-                        callBack: () {
-                          String _username = username.text.toString();
-                          String _password = password.text.toString();
-                          //print(ue);
-                          //login_model.api_call(context, _username, _password);
-          //                 FutureBuilder<LoginModelResponse>(
-          //   future: myApiService.get_login_api("xx","v153","123456789",""),
-          //   builder: (context, snapshot) {
-          //     if (snapshot.connectionState == ConnectionState.waiting) {
-          //       return CircularProgressIndicator();
-          //     } else if (snapshot.hasError) {
-          //       return Text('Error: ${snapshot.error}');
-          //     } else {
-          //       final userItem = snapshot.data!.items.first;
-          //       return Text('Status Message: ${userItem.user_session}');
-          //     }
-          //   },
-          // ),
-                        },
+                    child:Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                      if (isLoading) CircularProgressIndicator(),],),
+                  ),
+                  if (isLoading==false)
+                    Center(
+                      child: Container(
+                        width: 150,
+                        child: Mybutton(
+                          btnName: "Login",
+                          btnIcon: Icon(Icons.lock),
+                          btnStyle: mTextStyle11(),
+                          callBack: () {
+                            String _username = username.text.toString();
+                            String _password = password.text.toString();
+                            _functionLogin(context,_username, _password);
+                          },
+                        ),
                       ),
                     ),
-                  ),
                   Container(height: 100),
                   Center(
                     child: const Text(

@@ -23,6 +23,9 @@ if (flutterVersionName == null) {
 }
 
 android {
+    defaultConfig {
+        minSdkVersion 21
+    }
     namespace "com.kavita.kapil11"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
