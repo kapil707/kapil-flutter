@@ -8,7 +8,7 @@ import 'package:kapil11/utility/api_service.dart';
 import 'package:kapil11/utility/app_urls.dart';
 import 'package:kapil11/widgets/custom_app_bar.dart';
 import 'package:kapil11/home/home_page.dart';
-import 'package:kapil11/login/login_page.dart';
+import 'package:kapil11/new_login/login.dart';
 import 'package:kapil11/session.dart';
 import 'package:kapil11/medicine_search/medicine_search_page.dart';
 
@@ -41,7 +41,7 @@ class _SplashScreenClassState extends State<SplashScreenClass> {
           context,
           MaterialPageRoute(
             //builder: (context) => HomeClass(json_values: json),
-            builder: (context) => Mytestclass(),
+            builder: (context) => LoginClass(),
           ),
         );
 
@@ -74,9 +74,9 @@ class _SplashScreenClassState extends State<SplashScreenClass> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Image.asset(
-                  'assets/images/logo4.png',
-                  width: 100,
-                ),
+              'assets/images/logo4.png',
+              width: 100,
+            ),
             Container(height: 11),
             Text(
               'D.R. Distributor',

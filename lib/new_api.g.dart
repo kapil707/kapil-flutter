@@ -21,7 +21,7 @@ class _MyApiService implements MyApiService {
   String? baseUrl;
 
   @override
-  Future<UserResponse> get_login_api(
+  Future<LoginModelResponse> get_login_api(
     String api_key,
     String user_name,
     String user_password,
@@ -37,7 +37,7 @@ class _MyApiService implements MyApiService {
       'firebase_token': firebase_token,
     };
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<UserResponse>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<LoginModelResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -54,7 +54,7 @@ class _MyApiService implements MyApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = UserResponse.fromJson(_result.data!);
+    final value = LoginModelResponse.fromJson(_result.data!);
     return value;
   }
 
